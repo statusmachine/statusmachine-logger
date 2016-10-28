@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class AAL_Admin_Ui {
 
 	/**
-	 * @var AAL_Activity_Log_List_Table
+	 * @var SM_Status_Machine_List_Table
 	 */
 	protected $_list_table = null;
 	
@@ -212,11 +212,11 @@ class AAL_Admin_Ui {
 	}
 
 	/**
-	 * @return AAL_Activity_Log_List_Table
+	 * @return SM_Status_Machine_List_Table
 	 */
 	public function get_list_table() {
 		if ( is_null( $this->_list_table ) )
-			$this->_list_table = new AAL_Activity_Log_List_Table( array( 'screen' => $this->_screens['main'] ) );
+			$this->_list_table = new SM_Status_Machine_List_Table( array( 'screen' => $this->_screens['main'] ) );
 		
 		return $this->_list_table;
 	}

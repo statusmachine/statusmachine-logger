@@ -38,7 +38,7 @@ define( 'ACTIVITY_LOG__FILE__', __FILE__ );
 define( 'ACTIVITY_LOG_BASE', plugin_basename( ACTIVITY_LOG__FILE__ ) );
 
 include( 'classes/class-aal-maintenance.php' );
-include( 'classes/class-aal-activity-log-list-table.php' );
+include( 'classes/class-sm-status-machine-list-table.php' );
 include( 'classes/class-aal-admin-ui.php' );
 include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
