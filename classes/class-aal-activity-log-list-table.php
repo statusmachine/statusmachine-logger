@@ -30,7 +30,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			}
 
 			// TODO: Find better way to Multisite compatibility.
-			if ( is_super_admin() || current_user_can( 'view_all_aryo_activity_log' ) )
+			if ( is_super_admin() || current_user_can( 'view_all_status_machine' ) )
 				$allow_caps = $this->_caps['administrator'];
 
 			if ( empty( $allow_caps ) )
@@ -45,7 +45,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 		$allow_modules = array();
 
 		foreach ( $this->_roles as $key => $role ) {
-			if ( current_user_can( $key ) || current_user_can( 'view_all_aryo_activity_log' ) ) {
+			if ( current_user_can( $key ) || current_user_can( 'view_all_status_machine' ) ) {
 				$allow_modules = array_merge( $allow_modules, $role );
 			}
 		}

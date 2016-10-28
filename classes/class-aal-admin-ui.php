@@ -11,7 +11,7 @@ class AAL_Admin_Ui {
 	protected $_screens = array();
 
 	public function create_admin_menu() {
-		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : 'edit_pages';
+		$menu_capability = current_user_can( 'view_all_status_machine' ) ? 'view_all_status_machine' : 'edit_pages';
 		
 		$this->_screens['main'] = add_menu_page( __( 'Activity Log', 'status-machine' ), __( 'Activity Log', 'status-machine' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
 		
