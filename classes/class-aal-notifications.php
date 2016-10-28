@@ -13,7 +13,7 @@ class AAL_Notifications {
 	
 	public function __construct() {
 		// Load abstract class.
-		include( plugin_dir_path( ACTIVITY_LOG__FILE__ ) . '/notifications/abstract-class-aal-notification-base.php' );
+		include( plugin_dir_path( STATUS_MACHINE__FILE__ ) . '/notifications/abstract-class-aal-notification-base.php' );
 		
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
@@ -255,7 +255,7 @@ class AAL_Notifications {
 	 * @return string
 	 */
 	public function get_default_handler_path( $filename ) {
-		return plugin_dir_path( ACTIVITY_LOG__FILE__ ) . "notifications/$filename";
+		return plugin_dir_path( STATUS_MACHINE__FILE__ ) . "notifications/$filename";
 	}
 
 	/**

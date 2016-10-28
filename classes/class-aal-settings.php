@@ -59,8 +59,8 @@ class AAL_Settings {
 	 * @since 1.0
 	 */
 	public function scripts_n_styles() {
-		wp_enqueue_script( 'aal-settings', plugins_url( 'assets/js/settings.js', ACTIVITY_LOG__FILE__ ), array( 'jquery' ) );
-		wp_enqueue_style( 'aal-settings', plugins_url( 'assets/css/settings.css', ACTIVITY_LOG__FILE__ ) );
+		wp_enqueue_script( 'aal-settings', plugins_url( 'assets/js/settings.js', STATUS_MACHINE__FILE__ ), array( 'jquery' ) );
+		wp_enqueue_style( 'aal-settings', plugins_url( 'assets/css/settings.css', STATUS_MACHINE__FILE__ ) );
 	}
 
 	public function register_settings() {
