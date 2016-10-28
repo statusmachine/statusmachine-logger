@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-__( 'Activity Log', 'status-machine' );
+__( 'Status Machine', 'status-machine' );
 __( 'Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it\'s all these for you to see.', 'status-machine' );
 
 __( 'Administrator', 'status-machine' );

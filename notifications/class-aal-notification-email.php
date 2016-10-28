@@ -45,10 +45,10 @@ class AAL_Notification_Email extends AAL_Notification_Base {
 
 		wp_mail(
 			$to_email,
-			__( 'New notification from Activity Log', 'status-machine' ),
+			__( 'New notification from Status Machine', 'status-machine' ),
 			nl2br( $email_contents ),
 			array(
-				"From: Activity Log @ $site_name <$from_email>"
+				"From: Status Machine @ $site_name <$from_email>"
 			)
 		);
 

@@ -40,7 +40,7 @@ class AAL_Settings {
 	public function action_admin_menu() {
 		$this->hook = add_submenu_page(
 			'activity_log_page',
-			__( 'Activity Log Settings', 'status-machine' ), 	// <title> tag
+			__( 'Status Machine Settings', 'status-machine' ), 	// <title> tag
 			__( 'Settings', 'status-machine' ), 			// menu label
 			'manage_options', 								// required cap to view this page
 			$this->slug, 			// page slug
@@ -223,7 +223,7 @@ class AAL_Settings {
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
 
-			<h1 class="aal-page-title"><?php _e( 'Activity Log Settings', 'status-machine' ); ?></h1>
+			<h1 class="aal-page-title"><?php _e( 'Status Machine Settings', 'status-machine' ); ?></h1>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
@@ -321,7 +321,7 @@ final class AAL_Settings_Fields {
 
 	public static function general_settings_section_header() {
 		?>
-		<p><?php _e( 'These are some basic settings for Activity Log.', 'status-machine' ); ?></p>
+		<p><?php _e( 'These are some basic settings for Status Machine.', 'status-machine' ); ?></p>
 		<?php
 	}
 
