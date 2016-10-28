@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Admin_Ui {
+class SM_Admin_Ui {
 
 	/**
 	 * @var SM_Status_Machine_List_Table

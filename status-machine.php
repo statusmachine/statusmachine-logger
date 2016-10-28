@@ -39,7 +39,7 @@ define( 'STATUS_MACHINE_BASE', plugin_basename( STATUS_MACHINE__FILE__ ) );
 
 include( 'classes/class-aal-maintenance.php' );
 include( 'classes/class-sm-status-machine-list-table.php' );
-include( 'classes/class-aal-admin-ui.php' );
+include( 'classes/class-sm-admin-ui.php' );
 include( 'classes/class-aal-settings.php' );
 include( 'classes/class-aal-api.php' );
 include( 'classes/class-aal-hooks.php' );
@@ -59,7 +59,7 @@ final class AAL_Main {
 	private static $_instance = null;
 
 	/**
-	 * @var AAL_Admin_Ui
+	 * @var SM_Admin_Ui
 	 * @since 1.0.0
 	 */
 	public $ui;
@@ -95,7 +95,7 @@ final class AAL_Main {
 	protected function __construct() {
 		global $wpdb;
 		
-		$this->ui            = new AAL_Admin_Ui();
+		$this->ui            = new SM_Admin_Ui();
 		$this->hooks         = new AAL_Hooks();
 		$this->settings      = new AAL_Settings();
 		$this->api           = new AAL_API();
