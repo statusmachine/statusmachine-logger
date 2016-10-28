@@ -42,7 +42,7 @@ class AAL_Maintenance {
 	public static function mu_new_blog_installer( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 		global $wpdb;
 
-		if ( is_plugin_active_for_network( ACTIVITY_LOG_BASE ) ) {
+		if ( is_plugin_active_for_network( STATUS_MACHINE_BASE ) ) {
 			$old_blog_id = $wpdb->blogid;
 			switch_to_blog( $blog_id );
 			self::_create_tables();
@@ -99,8 +99,8 @@ class AAL_Maintenance {
 	}
 }
 
-register_activation_hook( ACTIVITY_LOG_BASE, array( 'AAL_Maintenance', 'activate' ) );
-register_uninstall_hook( ACTIVITY_LOG_BASE, array( 'AAL_Maintenance', 'uninstall' ) );
+register_activation_hook( STATUS_MACHINE_BASE, array( 'AAL_Maintenance', 'activate' ) );
+register_uninstall_hook( STATUS_MACHINE_BASE, array( 'AAL_Maintenance', 'uninstall' ) );
 
 // MU installer for new blog.
 add_action( 'wpmu_new_blog', array( 'AAL_Maintenance', 'mu_new_blog_installer' ), 10, 6 );

@@ -12,7 +12,7 @@ class AAL_Settings {
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
-		add_filter( 'plugin_action_links_' . ACTIVITY_LOG_BASE, array( &$this, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_' . STATUS_MACHINE_BASE, array( &$this, 'plugin_action_links' ) );
 
 		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
 		add_action( 'wp_ajax_aal_get_properties', array( &$this, 'ajax_aal_get_properties' ) );
