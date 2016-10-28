@@ -67,7 +67,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	}
 	
 	protected function _get_action_label( $action ) {
-		return ucwords( str_replace( '_', ' ', __( $action, 'aryo-activity-log' ) ) );
+		return ucwords( str_replace( '_', ' ', __( $action, 'status-machine' ) ) );
 	}
 
 	public function __construct( $args = array() ) {
@@ -101,7 +101,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			'per_page',
 			array(
 				'default' => 50,
-				'label'   => __( 'Activities', 'aryo-activity-log' ),
+				'label'   => __( 'Activities', 'status-machine' ),
 				'option'  => 'edit_aal_logs_per_page',
 			)
 		);
@@ -112,13 +112,13 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 	public function get_columns() {
 		$columns = array(
-			'date'        => __( 'Date', 'aryo-activity-log' ),
-			'author'      => __( 'Author', 'aryo-activity-log' ),
-			'ip'          => __( 'IP', 'aryo-activity-log' ),
-			'type'        => __( 'Type', 'aryo-activity-log' ),
-			'label'       => __( 'Label', 'aryo-activity-log' ),
-			'action'      => __( 'Action', 'aryo-activity-log' ),
-			'description' => __( 'Description', 'aryo-activity-log' ),
+			'date'        => __( 'Date', 'status-machine' ),
+			'author'      => __( 'Author', 'status-machine' ),
+			'ip'          => __( 'IP', 'status-machine' ),
+			'type'        => __( 'Type', 'status-machine' ),
+			'label'       => __( 'Label', 'status-machine' ),
+			'action'      => __( 'Action', 'status-machine' ),
+			'description' => __( 'Description', 'status-machine' ),
 		);
 
 		return $columns;
@@ -139,7 +139,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$return = $this->_get_action_label( $item->action );
 				break;
 			case 'date' :
-				$return  = sprintf( '<strong>' . __( '%s ago', 'aryo-activity-log' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
+				$return  = sprintf( '<strong>' . __( '%s ago', 'status-machine' ) . '</strong>', human_time_diff( $item->hist_time, current_time( 'timestamp' ) ) );
 				$return .= '<br />' . date( 'd/m/Y', $item->hist_time );
 				$return .= '<br />' . date( 'H:i:s', $item->hist_time );
 				break;
@@ -168,18 +168,18 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 					get_edit_user_link( $user->ID ),
 					get_avatar( $user->ID, 40 ),
 					$user->display_name,
-					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'aryo-activity-log' )
+					isset( $user->roles[0] ) && isset( $wp_roles->role_names[ $user->roles[0] ] ) ? $wp_roles->role_names[ $user->roles[0] ] : __( 'Unknown', 'status-machine' )
 				);
 			}
 		}
 		return sprintf(
 			'<span class="aal-author-name">%s</span>',
-			__( 'N/A', 'aryo-activity-log' )
+			__( 'N/A', 'status-machine' )
 		);
 	}
 
 	public function column_type( $item ) {
-		$return = __( $item->object_type, 'aryo-activity-log' );
+		$return = __( $item->object_type, 'status-machine' );
 		
 		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
 		return $return;
@@ -217,7 +217,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			
 			case 'Export' :
 				if ( 'all' === $item->object_name ) {
-					$return = __( 'All', 'aryo-activity-log' );
+					$return = __( 'All', 'status-machine' );
 				} else {
 					$pt     = get_post_type_object( $item->object_name );
 					$return = ! empty( $pt->label ) ? $pt->label : $item->object_name;
@@ -226,7 +226,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			case 'Options' :
 			case 'Core' :
-				$return = __( $item->object_name, 'aryo-activity-log' );
+				$return = __( $item->object_name, 'status-machine' );
 				break;
 		}
 		
@@ -237,7 +237,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
-			$this->search_box( __( 'Search', 'aryo-activity-log' ), 'aal-search' );
+			$this->search_box( __( 'Search', 'status-machine' ), 'aal-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
@@ -286,18 +286,18 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$_REQUEST['dateshow'] = '';
 
 			$date_options = array(
-				'' => __( 'All Time', 'aryo-activity-log' ),
-				'today' => __( 'Today', 'aryo-activity-log' ),
-				'yesterday' => __( 'Yesterday', 'aryo-activity-log' ),
-				'week' => __( 'Week', 'aryo-activity-log' ),
-				'month' => __( 'Month', 'aryo-activity-log' ),
+				'' => __( 'All Time', 'status-machine' ),
+				'today' => __( 'Today', 'status-machine' ),
+				'yesterday' => __( 'Yesterday', 'status-machine' ),
+				'week' => __( 'Week', 'status-machine' ),
+				'month' => __( 'Month', 'status-machine' ),
 			);
 			echo '<select name="dateshow" id="hs-filter-date">';
 			foreach ( $date_options as $key => $value )
 				printf( '<option value="%1$s"%2$s>%3$s</option>', $key, selected( $_REQUEST['dateshow'], $key, false ), $value );
 			echo '</select>';
 
-			submit_button( __( 'Filter', 'aryo-activity-log' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
+			submit_button( __( 'Filter', 'status-machine' ), 'button', false, false, array( 'id' => 'activity-query-submit' ) );
 		}
 
 		if ( $users ) {
@@ -306,12 +306,12 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $this->_get_allow_caps() as $cap ) {
-				$output[ $cap ] = __( ucwords( $cap ), 'aryo-activity-log' );
+				$output[ $cap ] = __( ucwords( $cap ), 'status-machine' );
 			}
 
 			if ( ! empty( $output ) ) {
 				echo '<select name="capshow" id="hs-filter-capshow">';
-				printf( '<option value="">%s</option>', __( 'All Roles', 'aryo-activity-log' ) );
+				printf( '<option value="">%s</option>', __( 'All Roles', 'status-machine' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['capshow'], $key, false ), $value );
 				}
@@ -324,7 +324,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 			$output = array();
 			foreach ( $users as $_user ) {
 				if ( 0 === (int) $_user->user_id ) {
-					$output[0] = __( 'N/A', 'aryo-activity-log' );
+					$output[0] = __( 'N/A', 'status-machine' );
 					continue;
 				}
 
@@ -335,7 +335,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			if ( ! empty( $output ) ) {
 				echo '<select name="usershow" id="hs-filter-usershow">';
-				printf( '<option value="">%s</option>', __( 'All Users', 'aryo-activity-log' ) );
+				printf( '<option value="">%s</option>', __( 'All Users', 'status-machine' ) );
 				foreach ( $output as $key => $value ) {
 					printf( '<option value="%s"%s>%s</option>', $key, selected( $_REQUEST['usershow'], $key, false ), $value );
 				}
@@ -349,10 +349,10 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 
 			$output = array();
 			foreach ( $types as $type )
-				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'aryo-activity-log' ) );
+				$output[] = sprintf( '<option value="%1$s"%2$s>%3$s</option>', $type->object_type, selected( $_REQUEST['typeshow'], $type->object_type, false ), __( $type->object_type, 'status-machine' ) );
 
 			echo '<select name="typeshow" id="hs-filter-typeshow">';
-			printf( '<option value="">%s</option>', __( 'All Types', 'aryo-activity-log' ) );
+			printf( '<option value="">%s</option>', __( 'All Types', 'status-machine' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}
@@ -378,7 +378,7 @@ class AAL_Activity_Log_List_Table extends WP_List_Table {
 				$output[] = sprintf( '<option value="%s"%s>%s</option>', $type->action, selected( $_REQUEST['showaction'], $type->action, false ), $this->_get_action_label( $type->action ) );
 
 			echo '<select name="showaction" id="hs-filter-showaction">';
-			printf( '<option value="">%s</option>', __( 'All Actions', 'aryo-activity-log' ) );
+			printf( '<option value="">%s</option>', __( 'All Actions', 'status-machine' ) );
 			echo implode( '', $output );
 			echo '</select>';
 		}

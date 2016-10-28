@@ -7,7 +7,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		$title = get_the_title( $post );
 		
 		if ( empty( $title ) )
-			$title = __( '(no title)', 'aryo-activity-log' );
+			$title = __( '(no title)', 'status-machine' );
 		
 		return $title;
 	}

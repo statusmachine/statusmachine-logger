@@ -13,7 +13,7 @@ class AAL_Admin_Ui {
 	public function create_admin_menu() {
 		$menu_capability = current_user_can( 'view_all_aryo_activity_log' ) ? 'view_all_aryo_activity_log' : 'edit_pages';
 		
-		$this->_screens['main'] = add_menu_page( __( 'Activity Log', 'aryo-activity-log' ), __( 'Activity Log', 'aryo-activity-log' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
+		$this->_screens['main'] = add_menu_page( __( 'Activity Log', 'status-machine' ), __( 'Activity Log', 'status-machine' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
 		
 		// Just make sure we are create instance.
 		add_action( 'load-' . $this->_screens['main'], array( &$this, 'get_list_table' ) );
@@ -23,7 +23,7 @@ class AAL_Admin_Ui {
 		$this->get_list_table()->prepare_items();
 		?>
 		<div class="wrap">
-			<h1 class="aal-page-title"><?php _e( 'Activity Log', 'aryo-activity-log' ); ?></h1>
+			<h1 class="aal-page-title"><?php _e( 'Activity Log', 'status-machine' ); ?></h1>
 
 			<form id="activity-filter" method="get">
 				<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
@@ -187,13 +187,13 @@ class AAL_Admin_Ui {
 				</div>
 				
 				<div class="aal-notice-content">
-					<h3><?php _e( 'Do You Like Activity Log? You\'ll Love Elementor!', 'aryo-activity-log' ); ?></h3>
-					<p><?php _e( 'Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. The most advanced frontend drag & drop page builder.', 'aryo-activity-log' ); ?>
-						<a href="https://go.elementor.com/learn/" target="_blank"><?php _e( 'Learn more about Elementor', 'aryo-activity-log' ); ?></a>.</p>
+					<h3><?php _e( 'Do You Like Activity Log? You\'ll Love Elementor!', 'status-machine' ); ?></h3>
+					<p><?php _e( 'Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design. The most advanced frontend drag & drop page builder.', 'status-machine' ); ?>
+						<a href="https://go.elementor.com/learn/" target="_blank"><?php _e( 'Learn more about Elementor', 'status-machine' ); ?></a>.</p>
 				</div>
 
 				<div class="aal-install-now">
-					<a class="button aal-install-button" href="<?php echo $install_url; ?>"><i class="dashicons dashicons-download"></i><?php _e( 'Install Now For Free!', 'aryo-activity-log' ); ?></a>
+					<a class="button aal-install-button" href="<?php echo $install_url; ?>"><i class="dashicons dashicons-download"></i><?php _e( 'Install Now For Free!', 'status-machine' ); ?></a>
 				</div>
 			</div>
 		</div>

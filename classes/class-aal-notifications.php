@@ -109,7 +109,7 @@ class AAL_Notifications {
 
 		// make key => value pairs (where slug in key)
 		foreach ( $opts as $opt ) {
-			$ready[ $opt ] = ucwords( str_replace( '_', ' ', __( $opt, 'aryo-activity-log' ) ) );
+			$ready[ $opt ] = ucwords( str_replace( '_', ' ', __( $opt, 'status-machine' ) ) );
 		}
 
 		return $ready;
@@ -287,7 +287,7 @@ class AAL_Notifications {
 	 */
 	public function register_handler( $classname ) {
 		if ( ! class_exists( $classname ) ) {
-			trigger_error( __( 'The AAL notification handler you are trying to register does not exist.', 'aryo-activity-log' ) );
+			trigger_error( __( 'The AAL notification handler you are trying to register does not exist.', 'status-machine' ) );
 			return false;
 		}
 
