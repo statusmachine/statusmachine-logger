@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_API {
+class SM_API {
 
 	/**
 	 * @since 1.0.0
@@ -159,7 +159,7 @@ class AAL_API {
 /**
  * @since 1.0.0
  *        
- * @see AAL_API::insert
+ * @see SM_API::insert
  *
  * @param array $args
  * @return void
