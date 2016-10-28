@@ -1,15 +1,20 @@
 <?php
 /*
-Plugin Name: Activity Log
-Plugin URI: http://wordpress.org/plugins/aryo-activity-log/
-Description: Get aware of any activities that are taking place on your dashboard! Imagine it like a black-box for your WordPress site. e.g. post was deleted, plugin was activated, user logged in or logged out - it's all these for you to see.
-Author: Yakir Sitbon, Maor Chasen, Ariel Klikstein
-Author URI: http://pojo.me/
-Version: 2.3.4
-Text Domain: aryo-activity-log
+Plugin Name: Status Machine
+Plugin URI: http://wordpress.org/plugins/status-machine/
+Description: Synchronizes the changes you've made in WordPress with your Status Machine account, so that you can later pinpoint what changes caused some effects on your site.
+Author: Julien Desrosiers, Yakir Sitbon, Maor Chasen, Ariel Klikstein
+Author URI: https://www.statusmachine.com/
+Version: 1.0.0
+Text Domain: status-machine
 License: GPLv2 or later
 
+FORK NOTICE:
+This plugin is a fork of the Activity Log plugin (https://fr.wordpress.org/plugins/aryo-activity-log/),
+and is intended to meet the requirements of Status Machine regarding the
+synchronization with Status Machine's API for its users.
 
+LICENSE:
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
@@ -23,6 +28,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
