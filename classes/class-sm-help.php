@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Contextual help texts
  *
- * Class AAL_Help
+ * Class SM_Help
  */
-class AAL_Help {
+class SM_Help {
 
     public function __construct() {
         add_action( 'in_admin_header', array( $this, 'contextual_help' ) );

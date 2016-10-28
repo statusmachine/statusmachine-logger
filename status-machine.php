@@ -44,7 +44,7 @@ include( 'classes/class-aal-settings.php' );
 include( 'classes/class-sm-api.php' );
 include( 'classes/class-aal-hooks.php' );
 include( 'classes/class-aal-notifications.php' );
-include( 'classes/class-aal-help.php' );
+include( 'classes/class-sm-help.php' );
 
 // Integrations
 include( 'classes/class-aal-integration-woocommerce.php' );
@@ -100,7 +100,7 @@ final class AAL_Main {
 		$this->settings      = new AAL_Settings();
 		$this->api           = new SM_API();
 		$this->notifications = new AAL_Notifications();
-		$this->help          = new AAL_Help();
+		$this->help          = new SM_Help();
 
 		// set up our DB name
 		$wpdb->activity_log = $wpdb->prefix . 'status_machine';
