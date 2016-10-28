@@ -62,7 +62,7 @@ class AAL_Maintenance {
 	protected static function _create_tables() {
 		global $wpdb;
 
-		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}aryo_activity_log` (
+		$sql = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}status_machine` (
 					  `histid` int(11) NOT NULL AUTO_INCREMENT,
 					  `user_caps` varchar(70) NOT NULL DEFAULT 'guest',
 					  `action` varchar(255) NOT NULL,
@@ -89,7 +89,7 @@ class AAL_Maintenance {
 	protected static function _remove_tables() {
 		global $wpdb;
 
-		$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}aryo_activity_log`;" );
+		$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}status_machine`;" );
 
 		$admin_role = get_role( 'administrator' );
 		if ( $admin_role && $admin_role->has_cap( 'view_all_aryo_activity_log' ) )

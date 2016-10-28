@@ -103,7 +103,7 @@ final class AAL_Main {
 		$this->help          = new AAL_Help();
 
 		// set up our DB name
-		$wpdb->activity_log = $wpdb->prefix . 'aryo_activity_log';
+		$wpdb->activity_log = $wpdb->prefix . 'status_machine';
 		
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 	}
