@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class SM_Hook_Options extends SM_Hook_Base {
 
 	public function hooks_updated_option( $option, $oldvalue, $_newvalue ) {
-		$whitelist_options = apply_filters( 'aal_whitelist_options', array(
+		$whitelist_options = apply_filters( 'sm_whitelist_options', array(
 			// General
 			'blogname',
 			'blogdescription',
