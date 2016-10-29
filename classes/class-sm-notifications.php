@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * 
  * @since 2.0.6
  */
-class AAL_Notifications {
+class SM_Notifications {
 	/* @todo public for debugging now, change to private/protected l8r */
 	public $handlers = array();
 	public $handlers_loaded = array();

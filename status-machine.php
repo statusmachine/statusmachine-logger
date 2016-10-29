@@ -37,17 +37,17 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 define( 'STATUS_MACHINE__FILE__', __FILE__ );
 define( 'STATUS_MACHINE_BASE', plugin_basename( STATUS_MACHINE__FILE__ ) );
 
-include( 'classes/class-aal-maintenance.php' );
+include( 'classes/class-sm-maintenance.php' );
 include( 'classes/class-sm-status-machine-list-table.php' );
 include( 'classes/class-sm-admin-ui.php' );
-include( 'classes/class-aal-settings.php' );
+include( 'classes/class-sm-settings.php' );
 include( 'classes/class-sm-api.php' );
-include( 'classes/class-aal-hooks.php' );
-include( 'classes/class-aal-notifications.php' );
+include( 'classes/class-sm-hooks.php' );
+include( 'classes/class-sm-notifications.php' );
 include( 'classes/class-sm-help.php' );
 
 // Integrations
-include( 'classes/class-aal-integration-woocommerce.php' );
+include( 'classes/class-sm-integration-woocommerce.php' );
 
 // Probably we should put this in a separate file
 final class AAL_Main {
@@ -99,7 +99,7 @@ final class AAL_Main {
 		$this->hooks         = new SM_Hooks();
 		$this->settings      = new AAL_Settings();
 		$this->api           = new SM_API();
-		$this->notifications = new AAL_Notifications();
+		$this->notifications = new SM_Notifications();
 		$this->help          = new SM_Help();
 
 		// set up our DB name
