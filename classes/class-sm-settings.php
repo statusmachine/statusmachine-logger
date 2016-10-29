@@ -59,8 +59,8 @@ class SM_Settings {
 	 * @since 1.0
 	 */
 	public function scripts_n_styles() {
-		wp_enqueue_script( 'aal-settings', plugins_url( 'assets/js/settings.js', STATUS_MACHINE__FILE__ ), array( 'jquery' ) );
-		wp_enqueue_style( 'aal-settings', plugins_url( 'assets/css/settings.css', STATUS_MACHINE__FILE__ ) );
+		wp_enqueue_script( 'sm-settings', plugins_url( 'assets/js/settings.js', STATUS_MACHINE__FILE__ ), array( 'jquery' ) );
+		wp_enqueue_style( 'sm-settings', plugins_url( 'assets/css/settings.css', STATUS_MACHINE__FILE__ ) );
 	}
 
 	public function register_settings() {
@@ -71,7 +71,7 @@ class SM_Settings {
 			) ) );
 		}
 
-		register_setting( 'aal-options', $this->slug, array( $this, 'validate_options' ) );
+		register_setting( 'sm-options', $this->slug, array( $this, 'validate_options' ) );
 		$section = $this->get_setup_section();
 
 		switch ( $section ) {
@@ -111,7 +111,7 @@ class SM_Settings {
 							'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'status-machine' ), add_query_arg( array(
 								'action' => 'sm_reset_items',
 								'_nonce' => wp_create_nonce( 'sm_reset_items' ),
-							), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
+							), admin_url( 'admin-ajax.php' ) ), 'sm-delete-log-activities' ),
 							'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'status-machine' ),
 						)
 					);
@@ -223,13 +223,13 @@ class SM_Settings {
 		<!-- Create a header in the default WordPress 'wrap' container -->
 		<div class="wrap">
 
-			<h1 class="aal-page-title"><?php _e( 'Status Machine Settings', 'status-machine' ); ?></h1>
+			<h1 class="sm-page-title"><?php _e( 'Status Machine Settings', 'status-machine' ); ?></h1>
 			<?php settings_errors(); ?>
 			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'aal-options' );
+				settings_fields( 'sm-options' );
 				do_settings_sections( $this->slug );
 				submit_button();
 				?>
@@ -252,7 +252,7 @@ class SM_Settings {
 		?>
 		<script type="text/javascript">
 			jQuery( document ).ready( function( $ ) {
-				$( '#aal-delete-log-activities' ).on( 'click', function( e ) {
+				$( '#sm-delete-log-activities' ).on( 'click', function( e ) {
 					if ( ! confirm( '<?php echo __( 'Are you sure you want to do this action?', 'status-machine' ); ?>' ) ) {
 						e.preventDefault();
 					}
@@ -462,7 +462,7 @@ final class SM_Settings_Fields {
 		$rows = empty( $rows ) ? array( array( 'key' => 1 ) ) : $rows;
 		?>
 		<p class="description"><?php _e( 'A notification will be sent upon a successful match with the following conditions:', 'status-machine' ); ?></p>
-		<div class="aal-notifier-settings">
+		<div class="sm-notifier-settings">
 			<ul>
 			<?php foreach ( $rows as $rid => $row ) :
 				$row_key 		= $row['key']; 
@@ -470,24 +470,24 @@ final class SM_Settings_Fields {
 				$row_value 		= isset( $row['value'] ) ? $row['value'] : '';
 				?>
 				<li data-id="<?php echo $rid; ?>">
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="aal-category">
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][key]" class="sm-category">
 						<?php foreach ( $keys as $k => $v ) : ?>
 						<option value="<?php echo $k; ?>" <?php selected( $row_key, $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="aal-condition">
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][condition]" class="sm-condition">
 						<?php foreach ( $conditions as $k => $v ) : ?>
 						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
 					<?php $value_options = SM_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
-					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
+					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="sm-value">
 						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
 						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<a href="#" class="aal-new-rule button"><small>+</small> and</a>
-					<a href="#" class="aal-delete-rule button">&times;</a>
+					<a href="#" class="sm-new-rule button"><small>+</small> and</a>
+					<a href="#" class="sm-delete-rule button">&times;</a>
 				</li>
 			<?php endforeach; ?>
 			</ul>

@@ -33,7 +33,7 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 	public function hooks_plugin_modify( $location, $status ) {
 		if ( false !== strpos( $location, 'plugin-editor.php' ) ) {
 			if ( ( ! empty( $_POST ) && 'update' === $_REQUEST['action'] ) ) {
-				$aal_args = array(
+				$sm_args = array(
 					'action'         => 'file_updated',
 					'object_type'    => 'Plugin',
 					'object_subtype' => 'plugin_unknown',
@@ -42,15 +42,15 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 				);
 
 				if ( ! empty( $_REQUEST['file'] ) ) {
-					$aal_args['object_name'] = $_REQUEST['file'];
+					$sm_args['object_name'] = $_REQUEST['file'];
 					// Get plugin name
 					$plugin_dir  = explode( '/', $_REQUEST['file'] );
 					$plugin_data = array_values( get_plugins( '/' . $plugin_dir[0] ) );
 					$plugin_data = array_shift( $plugin_data );
 
-					$aal_args['object_subtype'] = $plugin_data['Name'];
+					$sm_args['object_subtype'] = $plugin_data['Name'];
 				}
-				sm_insert_log( $aal_args );
+				sm_insert_log( $sm_args );
 			}
 		}
 

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class SM_Hook_Widgets extends SM_Hook_Base {
 
 	public function hooks_widget_update_callback( $instance, $new_instance, $old_instance, WP_Widget $widget ) {
-		$aal_args = array(
+		$sm_args = array(
 			'action'         => 'updated',
 			'object_type'    => 'Widget',
 			'object_subtype' => 'sidebar_unknown',
@@ -13,14 +13,14 @@ class SM_Hook_Widgets extends SM_Hook_Base {
 		);
 
 		if ( ! empty( $_REQUEST['sidebar'] ) )
-			$aal_args['object_subtype'] = strtolower( $_REQUEST['sidebar'] );
+			$sm_args['object_subtype'] = strtolower( $_REQUEST['sidebar'] );
 
 		/** @todo: find any way to widget deleted detected */
 		/*if ( isset( $_REQUEST['delete_widget'] ) && '1' === $_REQUEST['delete_widget'] ) {
-			$aal_args['action'] = 'deleted';
+			$sm_args['action'] = 'deleted';
 		}*/
 
-		sm_insert_log( $aal_args );
+		sm_insert_log( $sm_args );
 
 		// We are need return the instance, for complete the filter.
 		return $instance;

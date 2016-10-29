@@ -6,7 +6,7 @@ class SM_Hook_Theme extends SM_Hook_Base {
 	public function hooks_theme_modify( $location, $status ) {
 		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
 			if ( ! empty( $_POST ) && 'update' === $_POST['action'] ) {
-				$aal_args = array(
+				$sm_args = array(
 					'action'         => 'file_updated',
 					'object_type'    => 'Theme',
 					'object_subtype' => 'theme_unknown',
@@ -15,12 +15,12 @@ class SM_Hook_Theme extends SM_Hook_Base {
 				);
 
 				if ( ! empty( $_POST['file'] ) )
-					$aal_args['object_name'] = $_POST['file'];
+					$sm_args['object_name'] = $_POST['file'];
 
 				if ( ! empty( $_POST['theme'] ) )
-					$aal_args['object_subtype'] = $_POST['theme'];
+					$sm_args['object_subtype'] = $_POST['theme'];
 
-				sm_insert_log( $aal_args );
+				sm_insert_log( $sm_args );
 			}
 		}
 
@@ -41,7 +41,7 @@ class SM_Hook_Theme extends SM_Hook_Base {
 	}
 
 	public function hooks_theme_customizer_modified( WP_Customize_Manager $obj ) {
-		$aal_args = array(
+		$sm_args = array(
 			'action'         => 'updated',
 			'object_type'    => 'Theme',
 			'object_subtype' => $obj->theme()->display( 'Name' ),
@@ -50,9 +50,9 @@ class SM_Hook_Theme extends SM_Hook_Base {
 		);
 
 		if ( 'customize_preview_init' === current_filter() )
-			$aal_args['action'] = 'accessed';
+			$sm_args['action'] = 'accessed';
 
-		sm_insert_log( $aal_args );
+		sm_insert_log( $sm_args );
 	}
 
 	public function hooks_theme_deleted() {

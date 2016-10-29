@@ -23,7 +23,7 @@ class SM_Admin_Ui {
 		$this->get_list_table()->prepare_items();
 		?>
 		<div class="wrap">
-			<h1 class="aal-page-title"><?php _e( 'Status Machine', 'status-machine' ); ?></h1>
+			<h1 class="sm-page-title"><?php _e( 'Status Machine', 'status-machine' ); ?></h1>
 
 			<form id="activity-filter" method="get">
 				<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
@@ -33,7 +33,7 @@ class SM_Admin_Ui {
 		
 		<?php // TODO: move to a separate file. ?>
 		<style>
-			.aal-pt {
+			.sm-pt {
 				color: #ffffff;
 				padding: 1px 4px;
 				margin: 0 5px;
@@ -104,42 +104,42 @@ class SM_Admin_Ui {
 		$install_url = self_admin_url( 'plugin-install.php?tab=search&s=elementor' );
 		?>
 		<style>
-			.notice.aal-notice {
+			.notice.sm-notice {
 				border-left-color: #9b0a46 !important;
 				padding: 20px;
 			}
-			.rtl .notice.aal-notice {
+			.rtl .notice.sm-notice {
 				border-right-color: #9b0a46 !important;
 			}
-			.notice.aal-notice .aal-notice-inner {
+			.notice.sm-notice .sm-notice-inner {
 				display: table;
 				width: 100%;
 			}
-			.notice.aal-notice .aal-notice-inner .aal-notice-icon,
-			.notice.aal-notice .aal-notice-inner .aal-notice-content,
-			.notice.aal-notice .aal-notice-inner .aal-install-now {
+			.notice.sm-notice .sm-notice-inner .sm-notice-icon,
+			.notice.sm-notice .sm-notice-inner .sm-notice-content,
+			.notice.sm-notice .sm-notice-inner .sm-install-now {
 				display: table-cell;
 				vertical-align: middle;
 			}
-			.notice.aal-notice .aal-notice-icon {
+			.notice.sm-notice .sm-notice-icon {
 				color: #9b0a46;
 				font-size: 50px;
 				width: 50px;
 			}
-			.notice.aal-notice .aal-notice-content {
+			.notice.sm-notice .sm-notice-content {
 				padding: 0 20px;
 			}
-			.notice.aal-notice p {
+			.notice.sm-notice p {
 				padding: 0;
 				margin: 0;
 			}
-			.notice.aal-notice h3 {
+			.notice.sm-notice h3 {
 				margin: 0 0 5px;
 			}
-			.notice.aal-notice .aal-install-now {
+			.notice.sm-notice .sm-install-now {
 				text-align: center;
 			}
-			.notice.aal-notice .aal-install-now .aal-install-button {
+			.notice.sm-notice .sm-install-now .sm-install-button {
 				background-color: #9b0a46;
 				color: #fff;
 				border-color: #7c1337;
@@ -149,33 +149,33 @@ class SM_Admin_Ui {
 				line-height: 20px;
 				text-transform: capitalize;
 			}
-			.notice.aal-notice .aal-install-now .aal-install-button i {
+			.notice.sm-notice .sm-install-now .sm-install-button i {
 				padding-right: 5px;
 			}
-			.rtl .notice.aal-notice .aal-install-now .aal-install-button i {
+			.rtl .notice.sm-notice .sm-install-now .sm-install-button i {
 				padding-right: 0;
 				padding-left: 5px;
 			}
-			.notice.aal-notice .aal-install-now .aal-install-button:hover {
+			.notice.sm-notice .sm-install-now .sm-install-button:hover {
 				background-color: #a0124a;
 			}
-			.notice.aal-notice .aal-install-now .aal-install-button:active {
+			.notice.sm-notice .sm-install-now .sm-install-button:active {
 				box-shadow: inset 0 1px 0 #7c1337;
 				transform: translateY(1px);
 			}
 			@media (max-width: 767px) {
-				.notice.aal-notice {
+				.notice.sm-notice {
 					padding: 10px;
 				}
-				.notice.aal-notice .aal-notice-inner {
+				.notice.sm-notice .sm-notice-inner {
 					display: block;
 				}
-				.notice.aal-notice .aal-notice-inner .aal-notice-content {
+				.notice.sm-notice .sm-notice-inner .sm-notice-content {
 					display: block;
 					padding: 0;
 				}
-				.notice.aal-notice .aal-notice-inner .aal-notice-icon,
-				.notice.aal-notice .aal-notice-inner .aal-install-now {
+				.notice.sm-notice .sm-notice-inner .sm-notice-icon,
+				.notice.sm-notice .sm-notice-inner .sm-install-now {
 					display: none;
 				}
 			}
@@ -186,7 +186,7 @@ class SM_Admin_Ui {
 	public function print_js() {
 		?>
 		<script>jQuery( function( $ ) {
-				$( 'div.notice.aal-install-elementor' ).on( 'click', 'button.notice-dismiss', function( event ) {
+				$( 'div.notice.sm-install-elementor' ).on( 'click', 'button.notice-dismiss', function( event ) {
 					event.preventDefault();
 
 					$.post( ajaxurl, {

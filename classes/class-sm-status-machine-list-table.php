@@ -164,7 +164,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 			if ( $user instanceof WP_User && 0 !== $user->ID ) {
 				//$user->display_name
 				return sprintf(
-					'<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small>',
+					'<a href="%s">%s <span class="sm-author-name">%s</span></a><br /><small>%s</small>',
 					get_edit_user_link( $user->ID ),
 					get_avatar( $user->ID, 40 ),
 					$user->display_name,
@@ -173,7 +173,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 			}
 		}
 		return sprintf(
-			'<span class="aal-author-name">%s</span>',
+			'<span class="sm-author-name">%s</span>',
 			__( 'N/A', 'status-machine' )
 		);
 	}
@@ -237,7 +237,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 	
 	public function display_tablenav( $which ) {
 		if ( 'top' == $which )
-			$this->search_box( __( 'Search', 'status-machine' ), 'aal-search' );
+			$this->search_box( __( 'Search', 'status-machine' ), 'sm-search' );
 			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">

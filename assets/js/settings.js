@@ -9,7 +9,7 @@
 		init: function () {
 			var _this = this;
 
-			SM.$wrapper = $( ".aal-notifier-settings" );
+			SM.$wrapper = $( ".sm-notifier-settings" );
             SM.$container = $( "ul", this.$wrapper );
 
             SM.counter = SM.$container.children().size();
@@ -18,22 +18,22 @@
             if ( 1 === SM.counter ) {
                 var $temp_el = SM.$container.children().first();
                 // check if the "value" select box has no options
-                if ( 0 === $temp_el.find( ".aal-value option" ).size() ) {
+                if ( 0 === $temp_el.find( ".sm-value option" ).size() ) {
                     // click the button with a timeout. Note that this is a hack that will need
                     // to be solved server-side
                     setTimeout( function () {
-                        $temp_el.find( ".aal-category" ).change();
+                        $temp_el.find( ".sm-category" ).change();
                     }, 300 );
                 }
             }
 
 			// when the "add" button is clicked
-            SM.$container.on( 'click', '.aal-new-rule', function ( e ) {
+            SM.$container.on( 'click', '.sm-new-rule', function ( e ) {
 				e.preventDefault();
 				_this.addRule( $( this ).closest( 'li' ) );
 			});
 
-            SM.$container.on( 'click', '.aal-delete-rule', function ( e ) {
+            SM.$container.on( 'click', '.sm-delete-rule', function ( e ) {
 				e.preventDefault();
 
                 // do not delete item if it's the only one left in the list
@@ -45,7 +45,7 @@
 			});
 
 			// handle change on action category selectbox
-            SM.$container.on( 'change', '.aal-category', function ( e ) {
+            SM.$container.on( 'change', '.sm-category', function ( e ) {
 				e.preventDefault();
 
 				var $select = $( this ),
@@ -56,7 +56,7 @@
 
 				// grab live data via AJAX
 				var data = _this.getData( $select.val(), function ( d ) {
-					var $target = $siblings.filter( '.aal-value' );
+					var $target = $siblings.filter( '.sm-value' );
 					$target.empty(); // clear so we can insert fresh data
 
 					$.each( d.data, function ( k, v ) {
