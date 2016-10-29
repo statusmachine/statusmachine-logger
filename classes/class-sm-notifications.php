@@ -241,7 +241,7 @@ class SM_Notifications {
 	 */
 	public function load_default_handlers() {
 		$default_handlers = apply_filters( 'sm_default_addons', array(
-			'email' 			=> $this->get_default_handler_path( 'class-aal-notification-email.php' ),
+			'email' 			=> $this->get_default_handler_path( 'class-sm-notification-email.php' ),
 		) );
 
 		foreach ( $default_handlers as $filename )
