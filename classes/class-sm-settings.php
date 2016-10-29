@@ -66,7 +66,7 @@ class SM_Settings {
 	public function register_settings() {
 		// If no options exist, create them.
 		if ( ! get_option( $this->slug ) ) {
-			update_option( $this->slug, apply_filters( 'aal_default_options', array(
+			update_option( $this->slug, apply_filters( 'sm_default_options', array(
 				'logs_lifespan' => '30',
 			) ) );
 		}
