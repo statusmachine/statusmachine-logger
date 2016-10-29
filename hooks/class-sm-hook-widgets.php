@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Widgets extends SM_Hook_Base {
+class SM_Hook_Widgets extends SM_Hook_Base {
 
 	public function hooks_widget_update_callback( $instance, $new_instance, $old_instance, WP_Widget $widget ) {
 		$aal_args = array(
