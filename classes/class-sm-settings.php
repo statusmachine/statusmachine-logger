@@ -181,8 +181,8 @@ class SM_Settings {
 	 * @return string
 	 */
 	public function get_setup_section() {
-		if ( isset( $_REQUEST['aal_section'] ) )
-			return strtolower( $_REQUEST['aal_section'] );
+		if ( isset( $_REQUEST['sm_section'] ) )
+			return strtolower( $_REQUEST['sm_section'] );
 
 		return 'general';
 	}
@@ -197,11 +197,11 @@ class SM_Settings {
 			'notifications' => __( 'Notifications', 'status-machine' ),
 		);
 
-		$sections = apply_filters( 'aal_setup_sections', $sections );
+		$sections = apply_filters( 'sm_setup_sections', $sections );
 
 		foreach ( $sections as $section_key => $section_caption ) {
 			$active = $current_section === $section_key ? 'nav-tab-active' : '';
-			$url = add_query_arg( 'aal_section', $section_key );
+			$url = add_query_arg( 'sm_section', $section_key );
 			echo '<a class="nav-tab ' . $active . '" href="' . esc_url( $url ) . '">' . esc_html( $section_caption ) . '</a>';
 		}
 	}
