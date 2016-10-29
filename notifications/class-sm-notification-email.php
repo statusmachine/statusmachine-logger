@@ -57,7 +57,7 @@ class SM_Notification_Email extends SM_Notification_Base {
 	}
 
 	public function email_content_type() {
-		return apply_filters( 'aal_notification_email_content_type', 'text/html' );
+		return apply_filters( 'sm_notification_email_content_type', 'text/html' );
 	}
 	
 	public function settings_fields() {
