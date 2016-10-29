@@ -1,7 +1,7 @@
 'use strict';
 
 ( function ( $, undefined ) {
-	var AAL = {
+	var SM = {
 		$wrapper: {},
 		$container: {},
 		conter: 0,
@@ -9,14 +9,14 @@
 		init: function () {
 			var _this = this;
 
-			AAL.$wrapper = $( ".aal-notifier-settings" );
-            AAL.$container = $( "ul", this.$wrapper );
+			SM.$wrapper = $( ".aal-notifier-settings" );
+            SM.$container = $( "ul", this.$wrapper );
 
-            AAL.counter = AAL.$container.children().size();
+            SM.counter = SM.$container.children().size();
 
             // check if there's only one option
-            if ( 1 === AAL.counter ) {
-                var $temp_el = AAL.$container.children().first();
+            if ( 1 === SM.counter ) {
+                var $temp_el = SM.$container.children().first();
                 // check if the "value" select box has no options
                 if ( 0 === $temp_el.find( ".aal-value option" ).size() ) {
                     // click the button with a timeout. Note that this is a hack that will need
@@ -28,16 +28,16 @@
             }
 
 			// when the "add" button is clicked
-            AAL.$container.on( 'click', '.aal-new-rule', function ( e ) {
+            SM.$container.on( 'click', '.aal-new-rule', function ( e ) {
 				e.preventDefault();
 				_this.addRule( $( this ).closest( 'li' ) );
 			});
 
-            AAL.$container.on( 'click', '.aal-delete-rule', function ( e ) {
+            SM.$container.on( 'click', '.aal-delete-rule', function ( e ) {
 				e.preventDefault();
 
                 // do not delete item if it's the only one left in the list
-                if ( 1 === AAL.$container.children().size() ) {
+                if ( 1 === SM.$container.children().size() ) {
                     return;
                 }
 
@@ -45,7 +45,7 @@
 			});
 
 			// handle change on action category selectbox
-            AAL.$container.on( 'change', '.aal-category', function ( e ) {
+            SM.$container.on( 'change', '.aal-category', function ( e ) {
 				e.preventDefault();
 
 				var $select = $( this ),
@@ -99,16 +99,16 @@
 	};
 
 	$( function () {
-		AAL.init();
+		SM.init();
 	});
 
-	window.AAL = AAL;
+	window.SM = SM;
 
 
 	/**
 	 * Form serialization helper
 	 */
-	$.fn.AALSerializeObject = function() {
+	$.fn.SMSerializeObject = function() {
 		var o = {};
 		var a = this.serializeArray();
 		$.each( a, function() {
