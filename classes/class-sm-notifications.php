@@ -213,7 +213,7 @@ class SM_Notifications {
 			$handlers[ $handler_obj->id ] = $handler_obj;
 		}
 		
-		return apply_filters( 'aal_available_handlers', $handlers );
+		return apply_filters( 'sm_available_handlers', $handlers );
 	}
 	
 	/**
