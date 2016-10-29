@@ -14,8 +14,8 @@ class SM_Settings {
 		add_action( 'admin_footer', array( &$this, 'admin_footer' ) );
 		add_filter( 'plugin_action_links_' . STATUS_MACHINE_BASE, array( &$this, 'plugin_action_links' ) );
 
-		add_action( 'wp_ajax_aal_reset_items', array( &$this, 'ajax_aal_reset_items' ) );
-		add_action( 'wp_ajax_aal_get_properties', array( &$this, 'ajax_aal_get_properties' ) );
+		add_action( 'wp_ajax_sm_reset_items', array( &$this, 'ajax_sm_reset_items' ) );
+		add_action( 'wp_ajax_sm_get_properties', array( &$this, 'ajax_sm_get_properties' ) );
 	}
 	
 	public function init() {
@@ -109,8 +109,8 @@ class SM_Settings {
 						'general_settings_section',
 						array(
 							'html' => sprintf( __( '<a href="%s" id="%s">Reset Database</a>', 'status-machine' ), add_query_arg( array(
-								'action' => 'aal_reset_items',
-								'_nonce' => wp_create_nonce( 'aal_reset_items' ),
+								'action' => 'sm_reset_items',
+								'_nonce' => wp_create_nonce( 'sm_reset_items' ),
 							), admin_url( 'admin-ajax.php' ) ), 'aal-delete-log-activities' ),
 							'desc' => __( 'Warning: Clicking this will delete all activities from the database.', 'status-machine' ),
 						)
@@ -262,8 +262,8 @@ class SM_Settings {
 		<?php
 	}
 	
-	public function ajax_aal_reset_items() {
-		if ( ! check_ajax_referer( 'aal_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
+	public function ajax_sm_reset_items() {
+		if ( ! check_ajax_referer( 'sm_reset_items', '_nonce', false ) || ! current_user_can( 'manage_options' ) ) {
 			wp_die( __( 'You do not have sufficient permissions to access this page.', 'status-machine' ) );
 		}
 		
@@ -276,7 +276,7 @@ class SM_Settings {
 		die();
 	}
 
-	public function ajax_aal_get_properties() {
+	public function ajax_sm_get_properties() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error();
 		}

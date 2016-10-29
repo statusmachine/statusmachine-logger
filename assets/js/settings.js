@@ -91,7 +91,7 @@
 		},
 		getData: function ( type, cb ) {
 			var payload = {
-				action: 'aal_get_properties',
+				action: 'sm_get_properties',
 				action_category: type
 			};
 			$.getJSON( window.ajaxurl, payload, cb );

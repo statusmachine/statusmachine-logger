@@ -11,7 +11,7 @@ class SM_Admin_Ui {
 	protected $_screens = array();
 
 	public function create_admin_menu() {
-		$menu_capability = current_user_can( 'view_all_status_machine' ) ? 'view_all_status_machine' : 'edit_pages';
+		$menu_capability = current_user_can( 'view_sm_status_machine' ) ? 'view_sm_status_machine' : 'edit_pages';
 		
 		$this->_screens['main'] = add_menu_page( __( 'Status Machine', 'status-machine' ), __( 'Status Machine', 'status-machine' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
 		
@@ -83,7 +83,7 @@ class SM_Admin_Ui {
 	<?php
 	}
 	
-	public function ajax_aal_install_elementor_set_admin_notice_viewed() {
+	public function ajax_sm_install_elementor_set_admin_notice_viewed() {
 		update_user_meta( get_current_user_id(), '_aal_elementor_install_notice', 'true' );
 	}
 
@@ -190,7 +190,7 @@ class SM_Admin_Ui {
 					event.preventDefault();
 
 					$.post( ajaxurl, {
-						action: 'aal_install_elementor_set_admin_notice_viewed'
+						action: 'sm_install_elementor_set_admin_notice_viewed'
 					} );
 				} );
 			} );</script>
@@ -201,7 +201,7 @@ class SM_Admin_Ui {
 		add_action( 'admin_menu', array( &$this, 'create_admin_menu' ), 20 );
 		add_action( 'admin_head', array( &$this, 'admin_header' ) );
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
-		add_action( 'wp_ajax_aal_install_elementor_set_admin_notice_viewed', array( &$this, 'ajax_aal_install_elementor_set_admin_notice_viewed' ) );
+		add_action( 'wp_ajax_sm_install_elementor_set_admin_notice_viewed', array( &$this, 'ajax_sm_install_elementor_set_admin_notice_viewed' ) );
 	}
 	
 	private function _is_elementor_installed() {

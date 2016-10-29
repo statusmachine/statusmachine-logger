@@ -102,7 +102,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 			array(
 				'default' => 50,
 				'label'   => __( 'Activities', 'status-machine' ),
-				'option'  => 'edit_aal_logs_per_page',
+				'option'  => 'edit_sm_logs_per_page',
 			)
 		);
 
@@ -389,7 +389,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 	public function prepare_items() {
 		global $wpdb;
 	
-		$items_per_page        = $this->get_items_per_page( 'edit_aal_logs_per_page', 20 );
+		$items_per_page        = $this->get_items_per_page( 'edit_sm_logs_per_page', 20 );
 		$this->_column_headers = array( $this->get_columns(), get_hidden_columns( $this->screen ), $this->get_sortable_columns() );
 		$where                 = ' WHERE 1=1';
 
@@ -473,7 +473,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 	}
 	
 	public function set_screen_option( $status, $option, $value ) {
-		if ( 'edit_aal_logs_per_page' === $option )
+		if ( 'edit_sm_logs_per_page' === $option )
 			return $value;
 		return $status;
 	}
