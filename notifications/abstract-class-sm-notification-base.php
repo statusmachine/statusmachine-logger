@@ -20,7 +20,7 @@ abstract class SM_Notification_Base {
 		$this->aal_options = SM_Main::instance()->settings->get_options();
 		
 		add_action( 'init', array( &$this, 'init' ), 30 );
-		add_action( 'aal_validate_options', array( &$this, '_validate_options' ), 10, 2 );
+		add_action( 'sm_validate_options', array( &$this, '_validate_options' ), 10, 2 );
 	}
 
 	private function settings_field_name_attr( $name ) {

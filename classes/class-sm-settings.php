@@ -210,7 +210,7 @@ class SM_Settings {
 		$options = $this->options; // CTX,L1504
 		
 		// @todo some data validation/sanitization should go here
-		$output = apply_filters( 'aal_validate_options', $input, $options );
+		$output = apply_filters( 'sm_validate_options', $input, $options );
 
 		// merge with current settings
 		$output = array_merge( $options, $output );
