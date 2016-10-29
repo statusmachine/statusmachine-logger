@@ -163,7 +163,7 @@ class SM_Notifications {
 				
 			default:
 				// @todo allow plugins to extend and handle custom field types 
-				$results = apply_filters( 'aal_settings_dropdown_values', $results, $row_key );
+				$results = apply_filters( 'sm_settings_dropdown_values', $results, $row_key );
 				break;
 		}
 		
