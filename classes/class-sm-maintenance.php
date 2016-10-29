@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Maintenance {
+class SM_Maintenance {
 
 	public static function activate( $network_wide ) {
 		global $wpdb;
@@ -99,10 +99,10 @@ class AAL_Maintenance {
 	}
 }
 
-register_activation_hook( STATUS_MACHINE_BASE, array( 'AAL_Maintenance', 'activate' ) );
-register_uninstall_hook( STATUS_MACHINE_BASE, array( 'AAL_Maintenance', 'uninstall' ) );
+register_activation_hook( STATUS_MACHINE_BASE, array( 'SM_Maintenance', 'activate' ) );
+register_uninstall_hook( STATUS_MACHINE_BASE, array( 'SM_Maintenance', 'uninstall' ) );
 
 // MU installer for new blog.
-add_action( 'wpmu_new_blog', array( 'AAL_Maintenance', 'mu_new_blog_installer' ), 10, 6 );
+add_action( 'wpmu_new_blog', array( 'SM_Maintenance', 'mu_new_blog_installer' ), 10, 6 );
 // MU Uninstall for delete blog.
-add_action( 'delete_blog', array( 'AAL_Maintenance', 'mu_delete_blog' ), 10, 2 );
+add_action( 'delete_blog', array( 'SM_Maintenance', 'mu_delete_blog' ), 10, 2 );
