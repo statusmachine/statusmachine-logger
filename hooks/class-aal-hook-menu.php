@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Menu extends AAL_Hook_Base {
+class AAL_Hook_Menu extends SM_Hook_Base {
 
 	public function hooks_menu_created_or_updated( $nav_menu_selected_id ) {
 		if ( $menu_object = wp_get_nav_menu_object( $nav_menu_selected_id ) ) {

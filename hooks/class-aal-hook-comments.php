@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Comments extends AAL_Hook_Base {
+class AAL_Hook_Comments extends SM_Hook_Base {
 	
 	protected function _add_comment_log( $id, $action, $comment = null ) {
 		if ( is_null( $comment ) )

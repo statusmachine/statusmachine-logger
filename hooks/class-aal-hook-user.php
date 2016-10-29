@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_User extends AAL_Hook_Base {
+class AAL_Hook_User extends SM_Hook_Base {
 
 	public function hooks_wp_login( $user_login, $user ) {
 		aal_insert_log( array(

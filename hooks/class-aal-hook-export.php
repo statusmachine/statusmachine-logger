@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Export extends AAL_Hook_Base {
+class AAL_Hook_Export extends SM_Hook_Base {
 
 	public function hooks_export_wp( $args ) {
 		aal_insert_log(
