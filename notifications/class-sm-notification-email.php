@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Notification_Email extends SM_Notification_Base {
+class SM_Notification_Email extends SM_Notification_Base {
 	
 	/**
 	 * Store options in a class locally
@@ -87,4 +87,4 @@ class AAL_Notification_Email extends SM_Notification_Base {
 }
 
 // Register this handler, creates an instance of this class when necessary.
-aal_register_notification_handler( 'AAL_Notification_Email' );
+aal_register_notification_handler( 'SM_Notification_Email' );
