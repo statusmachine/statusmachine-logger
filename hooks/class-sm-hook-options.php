@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Options extends SM_Hook_Base {
+class SM_Hook_Options extends SM_Hook_Base {
 
 	public function hooks_updated_option( $option, $oldvalue, $_newvalue ) {
 		$whitelist_options = apply_filters( 'aal_whitelist_options', array(
