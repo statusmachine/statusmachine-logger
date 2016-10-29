@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Base class, handles notifications
  * 
- * Class AAL_Notification_Base
+ * Class SM_Notification_Base
  */
-abstract class AAL_Notification_Base {
+abstract class SM_Notification_Base {
 	/**
 	 * The following variables have to be defined for each payment method.
 	 */

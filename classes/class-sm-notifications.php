@@ -13,7 +13,7 @@ class SM_Notifications {
 	
 	public function __construct() {
 		// Load abstract class.
-		include( plugin_dir_path( STATUS_MACHINE__FILE__ ) . '/notifications/abstract-class-aal-notification-base.php' );
+		include( plugin_dir_path( STATUS_MACHINE__FILE__ ) . '/notifications/abstract-class-sm-notification-base.php' );
 		
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
@@ -196,7 +196,7 @@ class SM_Notifications {
 	 * Returns a handler object
 	 * 
 	 * @param string $id
-	 * @return AAL_Notification_Base|bool
+	 * @return SM_Notification_Base|bool
 	 */
 	public function get_handler_object( $id ) {
 		return isset( $this->handlers_loaded[ $id ] ) ? $this->handlers_loaded[ $id ] : false;
@@ -261,7 +261,7 @@ class SM_Notifications {
 	/**
 	 * Fired before $this->init()
 	 *
-	 * @todo maybe check $classname's inheritance tree and signal if it's not a AAL_Notification_Base
+	 * @todo maybe check $classname's inheritance tree and signal if it's not a SM_Notification_Base
 	 */
 	public function load_handlers() {
 		do_action( 'aal_load_notification_handlers' );
@@ -270,8 +270,8 @@ class SM_Notifications {
 			if ( class_exists( $handler_classname ) ) {
 				$obj = new $handler_classname;
 				
-				// is this handler extending AAL_Notification_Base?
-				if ( ! is_a( $obj, 'AAL_Notification_Base' ) )
+				// is this handler extending SM_Notification_Base?
+				if ( ! is_a( $obj, 'SM_Notification_Base' ) )
 					continue;
 				
 				$this->handlers_loaded[ $handler_classname ] = $obj;
