@@ -129,6 +129,6 @@ abstract class SM_Notification_Base {
 	}
 }
 
-function aal_register_notification_handler( $classname = '' ) {
+function sm_register_notification_handler( $classname = '' ) {
 	return SM_Main::instance()->notifications->register_handler( $classname );
 }

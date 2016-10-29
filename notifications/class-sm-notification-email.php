@@ -87,4 +87,4 @@ class SM_Notification_Email extends SM_Notification_Base {
 }
 
 // Register this handler, creates an instance of this class when necessary.
-aal_register_notification_handler( 'SM_Notification_Email' );
+sm_register_notification_handler( 'SM_Notification_Email' );
