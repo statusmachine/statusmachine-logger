@@ -130,7 +130,7 @@ class SM_Notifications {
 		switch ( $row_key ) {
 			case 'user':
 				// cache all data in case we need the same data twice on the same/upcoming pageloads
-				if ( false === ( $results = wp_cache_get( $cache_key = 'notifications-users', 'aal' ) ) ) {
+				if ( false === ( $results = wp_cache_get( $cache_key = 'notifications-users', 'sm' ) ) ) {
 					// get all users
 					$all_users = get_users();
 					$preped_users = array();
@@ -149,7 +149,7 @@ class SM_Notifications {
 						$preped_users[ $user->ID ] = apply_filters( 'sm_notifications_user_format', sprintf( '%s - %s (ID #%d)', $user->display_name, $user_role_name, $user->ID ), $user );
 					}
 					
-					wp_cache_set( $cache_key, $results = $preped_users, 'aal' ); // no need for expiration time
+					wp_cache_set( $cache_key, $results = $preped_users, 'sm' ); // no need for expiration time
 				}
 				break;
 				
