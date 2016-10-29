@@ -100,7 +100,7 @@ class SM_Settings {
 					)
 				);
 
-				if ( apply_filters( 'aal_allow_option_erase_logs', true ) ) {
+				if ( apply_filters( 'sm_allow_option_erase_logs', true ) ) {
 					add_settings_field(
 						'raw_delete_log_activities',
 						__( 'Delete Log Activities', 'status-machine' ),
