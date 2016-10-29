@@ -65,7 +65,7 @@ final class AAL_Main {
 	public $ui;
 
 	/**
-	 * @var AAL_Hooks
+	 * @var SM_Hooks
 	 * @since 1.0.1
 	 */
 	public $hooks;
@@ -96,7 +96,7 @@ final class AAL_Main {
 		global $wpdb;
 		
 		$this->ui            = new SM_Admin_Ui();
-		$this->hooks         = new AAL_Hooks();
+		$this->hooks         = new SM_Hooks();
 		$this->settings      = new AAL_Settings();
 		$this->api           = new SM_API();
 		$this->notifications = new AAL_Notifications();

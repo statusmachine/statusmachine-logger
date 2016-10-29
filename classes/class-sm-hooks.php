@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hooks {
+class SM_Hooks {
 	
 	public function __construct() {
 		// Load abstract class.
