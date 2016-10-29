@@ -61,7 +61,7 @@ class SM_Notifications {
 	public function get_object_types() {
 		// TODO: It's need to be integration from the plugin
 		$opts = apply_filters(
-			'aal_notification_get_object_types',
+			'sm_notification_get_object_types',
 			array(
 				'Core',
 				'Export',
