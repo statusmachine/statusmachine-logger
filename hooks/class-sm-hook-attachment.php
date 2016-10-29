@@ -6,7 +6,7 @@ class SM_Hook_Attachment extends SM_Hook_Base {
 	protected function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );
 
-		aal_insert_log( array(
+		sm_insert_log( array(
 			'action'         => $action,
 			'object_type'    => 'Attachment',
 			'object_subtype' => $post->post_type,

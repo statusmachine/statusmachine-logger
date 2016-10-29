@@ -40,7 +40,7 @@ class SM_Hook_Posts extends SM_Hook_Base {
 		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
 			return;
 
-		aal_insert_log(
+		sm_insert_log(
 			array(
 				'action' => $action,
 				'object_type' => 'Post',
@@ -64,7 +64,7 @@ class SM_Hook_Posts extends SM_Hook_Base {
 		if ( 'nav_menu_item' === get_post_type( $post->ID ) )
 			return;
 
-		aal_insert_log(
+		sm_insert_log(
 			array(
 				'action' => 'deleted',
 				'object_type' => 'Post',

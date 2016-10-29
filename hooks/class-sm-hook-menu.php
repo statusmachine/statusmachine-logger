@@ -10,7 +10,7 @@ class SM_Hook_Menu extends SM_Hook_Base {
 			else
 				$action = 'updated';
 			
-			aal_insert_log(
+			sm_insert_log(
 				array(
 					'action'      => $action,
 					'object_type' => 'Menu',
@@ -21,7 +21,7 @@ class SM_Hook_Menu extends SM_Hook_Base {
 	}
 
 	public function hooks_menu_deleted( $term, $tt_id, $deleted_term ) {
-		aal_insert_log(
+		sm_insert_log(
 			array(
 				'action'      => 'deleted',
 				'object_type' => 'Menu',

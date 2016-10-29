@@ -7,7 +7,7 @@ class SM_Hook_Comments extends SM_Hook_Base {
 		if ( is_null( $comment ) )
 			$comment = get_comment( $id );
 		
-		aal_insert_log( array(
+		sm_insert_log( array(
 			'action'         => $action,
 			'object_type'    => 'Comments',
 			'object_subtype' => get_post_type( $comment->comment_post_ID ),

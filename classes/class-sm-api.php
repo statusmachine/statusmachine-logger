@@ -152,7 +152,7 @@ class SM_API {
 
 		// Remove old items.
 		$this->_delete_old_items();
-		do_action( 'aal_insert_log', $args );
+		do_action( 'sm_insert_log', $args );
 	}
 }
 
@@ -164,6 +164,6 @@ class SM_API {
  * @param array $args
  * @return void
  */
-function aal_insert_log( $args = array() ) {
+function sm_insert_log( $args = array() ) {
 	SM_Main::instance()->api->insert( $args );
 }

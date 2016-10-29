@@ -20,7 +20,7 @@ class SM_Hook_Widgets extends SM_Hook_Base {
 			$aal_args['action'] = 'deleted';
 		}*/
 
-		aal_insert_log( $aal_args );
+		sm_insert_log( $aal_args );
 
 		// We are need return the instance, for complete the filter.
 		return $instance;
@@ -30,7 +30,7 @@ class SM_Hook_Widgets extends SM_Hook_Base {
 		// A reference: http://grinninggecko.com/hooking-into-widget-delete-action-in-wordpress/
 		if ( 'post' == strtolower( $_SERVER['REQUEST_METHOD'] ) && ! empty( $_REQUEST['widget-id'] ) ) {
 			if ( isset( $_REQUEST['delete_widget'] ) && 1 === (int) $_REQUEST['delete_widget'] ) {
-				aal_insert_log( array(
+				sm_insert_log( array(
 					'action'         => 'deleted',
 					'object_type'    => 'Widget',
 					'object_subtype' => strtolower( $_REQUEST['sidebar'] ),

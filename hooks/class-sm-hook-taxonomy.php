@@ -23,7 +23,7 @@ class SM_Hook_Taxonomy extends SM_Hook_Base {
 				$action = 'created';
 			}
 
-			aal_insert_log( array(
+			sm_insert_log( array(
 				'action'         => $action,
 				'object_type'    => 'Taxonomy',
 				'object_subtype' => $taxonomy,

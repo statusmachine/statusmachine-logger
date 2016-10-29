@@ -12,7 +12,7 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 			$plugin_name = $plugin_data['Name'];
 		}
 
-		aal_insert_log(
+		sm_insert_log(
 			array(
 				'action'      => $action,
 				'object_type' => 'Plugin',
@@ -50,7 +50,7 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 
 					$aal_args['object_subtype'] = $plugin_data['Name'];
 				}
-				aal_insert_log( $aal_args );
+				sm_insert_log( $aal_args );
 			}
 		}
 
@@ -73,7 +73,7 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 			
 			$data = get_plugin_data( $upgrader->skin->result['local_destination'] . '/' . $path, true, false );
 			
-			aal_insert_log(
+			sm_insert_log(
 				array(
 					'action' => 'installed',
 					'object_type' => 'Plugin',
@@ -96,7 +96,7 @@ class SM_Hook_Plugins extends SM_Hook_Base {
 			foreach ( $slugs as $slug ) {
 				$data = get_plugin_data( WP_PLUGIN_DIR . '/' . $slug, true, false );
 				
-				aal_insert_log(
+				sm_insert_log(
 					array(
 						'action' => 'updated',
 						'object_type' => 'Plugin',

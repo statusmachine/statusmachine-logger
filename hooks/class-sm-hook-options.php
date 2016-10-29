@@ -86,7 +86,7 @@ class SM_Hook_Options extends SM_Hook_Base {
 			return;
 
 		// TODO: need to think about save old & new values.
-		aal_insert_log( array(
+		sm_insert_log( array(
 			'action'         => 'updated',
 			'object_type'    => 'Options',
 			'object_name'    => $option,

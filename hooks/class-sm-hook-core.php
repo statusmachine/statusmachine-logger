@@ -12,7 +12,7 @@ class SM_Hook_Core extends SM_Hook_Base {
 		else
 			$object_name = 'WordPress Updated';
 
-		aal_insert_log(
+		sm_insert_log(
 			array(
 				'action'      => 'updated',
 				'object_type' => 'Core',

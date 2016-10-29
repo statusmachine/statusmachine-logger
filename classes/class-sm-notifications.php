@@ -17,8 +17,8 @@ class SM_Notifications {
 		
 		// Run handlers loader
 		add_action( 'init', array( &$this, 'load_handlers' ), 20 );
-		add_action( 'aal_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
-		add_action( 'aal_insert_log', array( &$this, 'process_notifications' ), 20 );
+		add_action( 'sm_load_notification_handlers', array( &$this, 'load_default_handlers' ) );
+		add_action( 'sm_insert_log', array( &$this, 'process_notifications' ), 20 );
 	}
 	
 	public function process_notifications( $args ) {
@@ -175,7 +175,7 @@ class SM_Notifications {
 	 * Key holds the classname, value holds the name of the transport.
 	 */
 	public function get_handlers() {
-		if ( empty( $this->handlers ) || ! did_action( 'aal_load_notification_handlers' ) )
+		if ( empty( $this->handlers ) || ! did_action( 'sm_load_notification_handlers' ) )
 			return array();
 		
 		$handlers = array();
@@ -236,7 +236,7 @@ class SM_Notifications {
 	}
 
 	/**
-	 * Runs during aal_load_notification_handlers, 
+	 * Runs during sm_load_notification_handlers, 
 	 * includes the necessary files to register default notification handlers.
 	 */
 	public function load_default_handlers() {
@@ -264,7 +264,7 @@ class SM_Notifications {
 	 * @todo maybe check $classname's inheritance tree and signal if it's not a SM_Notification_Base
 	 */
 	public function load_handlers() {
-		do_action( 'aal_load_notification_handlers' );
+		do_action( 'sm_load_notification_handlers' );
 
 		foreach ( $this->handlers as $handler_classname ) {
 			if ( class_exists( $handler_classname ) ) {
