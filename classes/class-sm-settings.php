@@ -80,14 +80,14 @@ class SM_Settings {
 				add_settings_section(
 					'general_settings_section',			// ID used to identify this section and with which to register options
 					__( 'Display Options', 'status-machine' ),	// Title to be displayed on the administration page
-					array( 'AAL_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
+					array( 'SM_Settings_Fields', 'general_settings_section_header' ),	// Callback used to render the description of the section
 					$this->slug		// Page on which to add this section of options
 				);
 
 				add_settings_field(
 					'logs_lifespan',
 					__( 'Keep logs for', 'status-machine' ),
-					array( 'AAL_Settings_Fields', 'number_field' ),
+					array( 'SM_Settings_Fields', 'number_field' ),
 					$this->slug,
 					'general_settings_section',
 					array(
@@ -104,7 +104,7 @@ class SM_Settings {
 					add_settings_field(
 						'raw_delete_log_activities',
 						__( 'Delete Log Activities', 'status-machine' ),
-						array( 'AAL_Settings_Fields', 'raw_html' ),
+						array( 'SM_Settings_Fields', 'raw_html' ),
 						$this->slug,
 						'general_settings_section',
 						array(
@@ -123,14 +123,14 @@ class SM_Settings {
 				add_settings_section(
 					'email_notifications', // ID used to identify this section and with which to register options
 					__( 'Notifications', 'status-machine' ),	// Title to be displayed on the administration page
-					array( 'AAL_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
+					array( 'SM_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
 					$this->slug		// Page on which to add this section of options
 				);
 
 				add_settings_field(
 					'notification_rules',
 					__( 'Notification Events', 'status-machine' ),
-					array( 'AAL_Settings_Fields', 'email_notification_buffer_field' ),
+					array( 'SM_Settings_Fields', 'email_notification_buffer_field' ),
 					$this->slug,
 					'email_notifications',
 					array(
@@ -317,7 +317,7 @@ class SM_Settings {
 }
 
 // TODO: Need rewrite this class to useful tool.
-final class AAL_Settings_Fields {
+final class SM_Settings_Fields {
 
 	public static function general_settings_section_header() {
 		?>
