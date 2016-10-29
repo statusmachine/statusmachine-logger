@@ -89,7 +89,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 		);
 
 		$this->_caps = apply_filters(
-			'aal_init_caps',
+			'sm_init_caps',
 			array(
 				'administrator' => array( 'administrator', 'editor', 'author', 'guest' ),
 				'editor'        => array( 'editor', 'author', 'guest' ),
