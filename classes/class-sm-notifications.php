@@ -146,7 +146,7 @@ class SM_Notifications {
 						$user_role_obj = get_role( $user_role[0] );
 						$user_role_name = isset( $user_role_obj->name ) ? $user_role_obj->name : $user_role[0];
 							
-						$preped_users[ $user->ID ] = apply_filters( 'aal_notifications_user_format', sprintf( '%s - %s (ID #%d)', $user->display_name, $user_role_name, $user->ID ), $user );
+						$preped_users[ $user->ID ] = apply_filters( 'sm_notifications_user_format', sprintf( '%s - %s (ID #%d)', $user->display_name, $user_role_name, $user->ID ), $user );
 					}
 					
 					wp_cache_set( $cache_key, $results = $preped_users, 'aal' ); // no need for expiration time
