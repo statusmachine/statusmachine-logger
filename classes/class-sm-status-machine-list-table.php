@@ -151,7 +151,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 					$return = $item->$column_name;
 		}
 
-		$return = apply_filters( 'aal_table_list_column_default', $return, $item, $column_name );
+		$return = apply_filters( 'sm_table_list_column_default', $return, $item, $column_name );
 		
 		return $return;
 	}
@@ -181,7 +181,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 	public function column_type( $item ) {
 		$return = __( $item->object_type, 'status-machine' );
 		
-		$return = apply_filters( 'aal_table_list_column_type', $return, $item );
+		$return = apply_filters( 'sm_table_list_column_type', $return, $item );
 		return $return;
 	}
 
@@ -192,7 +192,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 			$return = ! empty( $pt->label ) ? $pt->label : $item->object_subtype;
 		}
 
-		$return = apply_filters( 'aal_table_list_column_label', $return, $item );
+		$return = apply_filters( 'sm_table_list_column_label', $return, $item );
 		return $return;
 	}
 	
@@ -230,7 +230,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 				break;
 		}
 		
-		$return = apply_filters( 'aal_table_list_column_description', $return, $item );
+		$return = apply_filters( 'sm_table_list_column_description', $return, $item );
 		
 		return $return;
 	}
