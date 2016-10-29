@@ -84,7 +84,7 @@ class SM_Admin_Ui {
 	}
 	
 	public function ajax_sm_install_elementor_set_admin_notice_viewed() {
-		update_user_meta( get_current_user_id(), '_aal_elementor_install_notice', 'true' );
+		update_user_meta( get_current_user_id(), '_sm_elementor_install_notice', 'true' );
 	}
 
 	public function admin_notices() {
@@ -92,7 +92,7 @@ class SM_Admin_Ui {
 			return;
 		
 
-		if ( 'true' === get_user_meta( get_current_user_id(), '_aal_elementor_install_notice', true ) )
+		if ( 'true' === get_user_meta( get_current_user_id(), '_sm_elementor_install_notice', true ) )
 			return;
 		
 		if ( ! in_array( get_current_screen()->id, array( 'toplevel_page_activity_log_page', 'dashboard', 'plugins', 'plugins-network' ) ) ) {
