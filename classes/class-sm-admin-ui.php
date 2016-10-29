@@ -76,8 +76,15 @@ class SM_Admin_Ui {
 	public function admin_header() {
 		// TODO: move to a separate file.
 		?><style>
-			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image:before {
-				content: "\f321";
+			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image::before {
+				content: none !important;
+			}
+			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image {
+				background: url(<?php echo plugins_url('../assets/images/sm-sprite.png', __FILE__) ?>) no-repeat 0 -32px !important;
+			}
+        #adminmenu #toplevel_page_activity_log_page:hover .wp-menu-image,
+        #adminmenu #toplevel_page_activity_log_page.wp-has-current-submenu .wp-menu-image {
+				background-position: 0 2px !important;
 			}
 		</style>
 	<?php
