@@ -84,7 +84,7 @@ class SM_Notifications {
 	public function get_actions() {
 		// TODO: It's need to be integration from the plugin
 		$opts = apply_filters(
-			'aal_notification_get_actions',
+			'sm_notification_get_actions',
 			array(
 				'created',
 				'deleted',
