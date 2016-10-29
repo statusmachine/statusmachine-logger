@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Integration_WooCommerce {
+class SM_Integration_WooCommerce {
 
 	private $_wc_options = array();
 
@@ -48,4 +48,4 @@ class AAL_Integration_WooCommerce {
 	}
 
 }
-new AAL_Integration_WooCommerce();
+new SM_Integration_WooCommerce();
