@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Theme extends SM_Hook_Base {
+class SM_Hook_Theme extends SM_Hook_Base {
 
 	public function hooks_theme_modify( $location, $status ) {
 		if ( false !== strpos( $location, 'theme-editor.php?file=' ) ) {
