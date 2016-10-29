@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Settings {
+class SM_Settings {
 	private $hook;
 	public $slug = 'activity-log-settings';
 	protected $options;

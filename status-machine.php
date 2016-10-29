@@ -71,7 +71,7 @@ final class AAL_Main {
 	public $hooks;
 
 	/**
-	 * @var AAL_Settings
+	 * @var SM_Settings
 	 * @since 1.0.0
 	 */
 	public $settings;
@@ -97,7 +97,7 @@ final class AAL_Main {
 		
 		$this->ui            = new SM_Admin_Ui();
 		$this->hooks         = new SM_Hooks();
-		$this->settings      = new AAL_Settings();
+		$this->settings      = new SM_Settings();
 		$this->api           = new SM_API();
 		$this->notifications = new SM_Notifications();
 		$this->help          = new SM_Help();
