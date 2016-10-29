@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Core extends SM_Hook_Base {
+class SM_Hook_Core extends SM_Hook_Base {
 
 	public function core_updated_successfully( $wp_version ) {
 		global $pagenow;
