@@ -44,7 +44,7 @@ abstract class SM_Notification_Base {
 	}
 	
 	public function _settings_enabled_field_callback( $args = array() ) {
-		AAL_Settings_Fields::yesno_field( $args );
+		SM_Settings_Fields::yesno_field( $args );
 	}
 	
 	public function add_settings_field_helper( $option_name, $title, $callback, $description = '', $default_value = '' ) {

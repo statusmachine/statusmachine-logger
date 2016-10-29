@@ -63,9 +63,9 @@ class SM_Notification_Email extends SM_Notification_Base {
 	public function settings_fields() {
 		$default_email_message = __( "Hi there!\n\nA notification condition on [sitename] was matched. Here are the details:\n\n[action-details]\n\nSent by Status Machine", 'status-machine' );
 
-		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'status-machine' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The source Email address', 'status-machine' ) );
-		$this->add_settings_field_helper( 'to_email', __( 'To Email', 'status-machine' ), array( 'AAL_Settings_Fields', 'text_field' ), __( 'The Email address notifications will be sent to', 'status-machine' ) );
-		$this->add_settings_field_helper( 'message_format', __( 'Message', 'status-machine' ), array( 'AAL_Settings_Fields', 'textarea_field' ), sprintf( __( 'Customize the message using the following placeholders: %s', 'status-machine' ), '[sitename], [action-details]' ), $default_email_message );
+		$this->add_settings_field_helper( 'from_email', __( 'From Email', 'status-machine' ), array( 'SM_Settings_Fields', 'text_field' ), __( 'The source Email address', 'status-machine' ) );
+		$this->add_settings_field_helper( 'to_email', __( 'To Email', 'status-machine' ), array( 'SM_Settings_Fields', 'text_field' ), __( 'The Email address notifications will be sent to', 'status-machine' ) );
+		$this->add_settings_field_helper( 'message_format', __( 'Message', 'status-machine' ), array( 'SM_Settings_Fields', 'textarea_field' ), sprintf( __( 'Customize the message using the following placeholders: %s', 'status-machine' ), '[sitename], [action-details]' ), $default_email_message );
 	}
 	
 	public function validate_options( $input ) {
