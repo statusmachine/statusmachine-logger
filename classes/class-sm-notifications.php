@@ -240,7 +240,7 @@ class SM_Notifications {
 	 * includes the necessary files to register default notification handlers.
 	 */
 	public function load_default_handlers() {
-		$default_handlers = apply_filters( 'aal_default_addons', array(
+		$default_handlers = apply_filters( 'sm_default_addons', array(
 			'email' 			=> $this->get_default_handler_path( 'class-aal-notification-email.php' ),
 		) );
 
