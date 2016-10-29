@@ -29,7 +29,7 @@ class SM_Notifications {
 			return;
 		
 		// calculate if this type event is set in the rules
-		$options = AAL_Main::instance()->settings->get_options();
+		$options = SM_Main::instance()->settings->get_options();
 		
 		// if there are no rules set, bail.
 		if ( empty( $options['notification_rules'] ) || ! is_array( $options['notification_rules'] ) )
@@ -223,7 +223,7 @@ class SM_Notifications {
 	 */
 	public function get_enabled_handlers() {
 		$enabled = array();
-		$options = AAL_Main::instance()->settings->get_options();
+		$options = SM_Main::instance()->settings->get_options();
 		
 		foreach ( $this->get_available_handlers() as $id => $handler_obj ) {
 			// make sure handler is active

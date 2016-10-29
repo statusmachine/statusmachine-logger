@@ -17,7 +17,7 @@ abstract class SM_Notification_Base {
 	public $aal_options;
 	
 	public function __construct() {
-		$this->aal_options = AAL_Main::instance()->settings->get_options();
+		$this->aal_options = SM_Main::instance()->settings->get_options();
 		
 		add_action( 'init', array( &$this, 'init' ), 30 );
 		add_action( 'aal_validate_options', array( &$this, '_validate_options' ), 10, 2 );
@@ -48,7 +48,7 @@ abstract class SM_Notification_Base {
 	}
 	
 	public function add_settings_field_helper( $option_name, $title, $callback, $description = '', $default_value = '' ) {
-		$settings_page_slug = AAL_Main::instance()->settings->slug();
+		$settings_page_slug = SM_Main::instance()->settings->slug();
 		$handler_options = isset( $this->aal_options["handler_options_{$this->id}"] )
 			? $this->aal_options["handler_options_{$this->id}"] : array();
 		
@@ -130,5 +130,5 @@ abstract class SM_Notification_Base {
 }
 
 function aal_register_notification_handler( $classname = '' ) {
-	return AAL_Main::instance()->notifications->register_handler( $classname );
+	return SM_Main::instance()->notifications->register_handler( $classname );
 }

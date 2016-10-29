@@ -50,10 +50,10 @@ include( 'classes/class-sm-help.php' );
 include( 'classes/class-sm-integration-woocommerce.php' );
 
 // Probably we should put this in a separate file
-final class AAL_Main {
+final class SM_Main {
 
 	/**
-	 * @var AAL_Main The one true AAL_Main
+	 * @var SM_Main The one true SM_Main
 	 * @since 2.0.5
 	 */
 	private static $_instance = null;
@@ -134,13 +134,13 @@ final class AAL_Main {
 	}
 
 	/**
-	 * @return AAL_Main
+	 * @return SM_Main
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) )
-			self::$_instance = new AAL_Main();
+			self::$_instance = new SM_Main();
 		return self::$_instance;
 	}
 }
 
-AAL_Main::instance();
+SM_Main::instance();

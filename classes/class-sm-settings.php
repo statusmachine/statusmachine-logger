@@ -140,8 +140,8 @@ class SM_Settings {
 					)
 				);
 
-				$notification_handlers = AAL_Main::instance()->notifications->get_available_handlers();
-				$enabled_notification_handlers = AAL_Main::instance()->settings->get_option( 'notification_handlers' );
+				$notification_handlers = SM_Main::instance()->notifications->get_available_handlers();
+				$enabled_notification_handlers = SM_Main::instance()->settings->get_option( 'notification_handlers' );
 
 				// Loop through custom notification handlers
 				foreach ( $notification_handlers as $handler_id => $handler_obj  ) {
@@ -267,7 +267,7 @@ class SM_Settings {
 			wp_die( __( 'You do not have sufficient permissions to access this page.', 'status-machine' ) );
 		}
 		
-		AAL_Main::instance()->api->erase_all_items();
+		SM_Main::instance()->api->erase_all_items();
 		
 		wp_redirect( add_query_arg( array(
 				'page' => 'activity-log-settings',
@@ -283,7 +283,7 @@ class SM_Settings {
 			
 		$action_category = isset( $_REQUEST['action_category'] ) ? $_REQUEST['action_category'] : false;
 		
-		$options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
+		$options = SM_Main::instance()->notifications->get_settings_dropdown_values( $action_category );
 
 		if ( ! empty( $options ) ) {
 			wp_send_json_success( $options );
@@ -457,7 +457,7 @@ final class SM_Settings_Fields {
 		$common_name = sprintf( '%s[%s]', esc_attr( $args['page'] ), esc_attr( $args['id'] ) );
 
 		// get all rows
-		$rows = AAL_Main::instance()->settings->get_option( $args['id'] );
+		$rows = SM_Main::instance()->settings->get_option( $args['id'] );
 		// if empty, reset to one element with the key of 1
 		$rows = empty( $rows ) ? array( array( 'key' => 1 ) ) : $rows;
 		?>
@@ -480,7 +480,7 @@ final class SM_Settings_Fields {
 						<option value="<?php echo $k; ?>" <?php selected( $row_condition, $k ); ?>><?php echo $v; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<?php $value_options = AAL_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
+					<?php $value_options = SM_Main::instance()->notifications->get_settings_dropdown_values( $row_key ); ?>
 					<select name="<?php echo $common_name; ?>[<?php echo $rid; ?>][value]" class="aal-value">
 						<?php foreach ( $value_options as $option_key => $option_value ) : ?>
 						<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $row_value ); ?>><?php echo esc_html( $option_value ); ?></option>
@@ -501,7 +501,7 @@ final class SM_Settings_Fields {
 		}
 		
 		if ( ! isset( $args['value'] ) ) {
-			$args['value'] = AAL_Main::instance()->settings->get_option( $args['id'] );
+			$args['value'] = SM_Main::instance()->settings->get_option( $args['id'] );
 		}
 	}
 }

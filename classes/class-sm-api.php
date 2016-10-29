@@ -11,7 +11,7 @@ class SM_API {
 	protected function _delete_old_items() {
 		global $wpdb;
 		
-		$logs_lifespan = absint( AAL_Main::instance()->settings->get_option( 'logs_lifespan' ) );
+		$logs_lifespan = absint( SM_Main::instance()->settings->get_option( 'logs_lifespan' ) );
 		if ( empty( $logs_lifespan ) )
 			return;
 		
@@ -165,5 +165,5 @@ class SM_API {
  * @return void
  */
 function aal_insert_log( $args = array() ) {
-	AAL_Main::instance()->api->insert( $args );
+	SM_Main::instance()->api->insert( $args );
 }
