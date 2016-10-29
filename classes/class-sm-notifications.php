@@ -287,7 +287,7 @@ class SM_Notifications {
 	 */
 	public function register_handler( $classname ) {
 		if ( ! class_exists( $classname ) ) {
-			trigger_error( __( 'The AAL notification handler you are trying to register does not exist.', 'status-machine' ) );
+			trigger_error( __( 'The Status Machine notification handler you are trying to register does not exist.', 'status-machine' ) );
 			return false;
 		}
 

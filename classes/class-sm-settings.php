@@ -49,7 +49,7 @@ class SM_Settings {
 
 		// register scripts & styles, specific for the settings page
 		add_action( "admin_print_scripts-{$this->hook}", array( &$this, 'scripts_n_styles' ) );
-		// this callback will initialize the settings for AAL
+		// this callback will initialize the settings for SM
 		// add_action( "load-$this->hook", array( $this, 'register_settings' ) );
 	}
 
@@ -176,7 +176,7 @@ class SM_Settings {
 	}
 
 	/**
-	 * Returns the current section within AAL's setting pages
+	 * Returns the current section within SM's setting pages
 	 *
 	 * @return string
 	 */
@@ -304,7 +304,7 @@ class SM_Settings {
 	 * @return array
 	 */
 	public function get_options() {
-		// Allow other plugins to get AAL's options.
+		// Allow other plugins to get SM's options.
 		if ( isset( $this->options ) && is_array( $this->options ) && ! empty( $this->options ) )
 			return $this->options;
 		
