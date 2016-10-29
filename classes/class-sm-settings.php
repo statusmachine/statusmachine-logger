@@ -308,7 +308,7 @@ class SM_Settings {
 		if ( isset( $this->options ) && is_array( $this->options ) && ! empty( $this->options ) )
 			return $this->options;
 		
-		return apply_filters( 'aal_options', get_option( $this->slug, array() ) );
+		return apply_filters( 'sm_options', get_option( $this->slug, array() ) );
 	}
 	
 	public function slug() {

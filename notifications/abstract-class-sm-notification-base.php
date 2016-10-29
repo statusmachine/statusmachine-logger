@@ -14,10 +14,10 @@ abstract class SM_Notification_Base {
 	public $name = '';
 	public $description = '';
 	
-	public $aal_options;
+	public $sm_options;
 	
 	public function __construct() {
-		$this->aal_options = SM_Main::instance()->settings->get_options();
+		$this->sm_options = SM_Main::instance()->settings->get_options();
 		
 		add_action( 'init', array( &$this, 'init' ), 30 );
 		add_action( 'sm_validate_options', array( &$this, '_validate_options' ), 10, 2 );
@@ -49,8 +49,8 @@ abstract class SM_Notification_Base {
 	
 	public function add_settings_field_helper( $option_name, $title, $callback, $description = '', $default_value = '' ) {
 		$settings_page_slug = SM_Main::instance()->settings->slug();
-		$handler_options = isset( $this->aal_options["handler_options_{$this->id}"] )
-			? $this->aal_options["handler_options_{$this->id}"] : array();
+		$handler_options = isset( $this->sm_options["handler_options_{$this->id}"] )
+			? $this->sm_options["handler_options_{$this->id}"] : array();
 		
 		add_settings_field( 
 			"notification_handler_{$this->id}_{$option_name}", 
@@ -68,7 +68,7 @@ abstract class SM_Notification_Base {
 		);
 	}
 	
-	public function _validate_options( $form_data, $aal_options ) {
+	public function _validate_options( $form_data, $sm_options ) {
 		$post_key 	= "notification_handler_options_{$this->id}";
 		$option_key = "handler_options_{$this->id}";
 	
@@ -86,8 +86,8 @@ abstract class SM_Notification_Base {
 		$handler_options = array();
 		$option_key = "handler_options_{$this->id}";
 		
-		if ( isset( $this->aal_options[ $option_key ] ) ) {
-			$handler_options = (array) $this->aal_options[ $option_key ];
+		if ( isset( $this->sm_options[ $option_key ] ) ) {
+			$handler_options = (array) $this->sm_options[ $option_key ];
 		}
 		
 		return $handler_options;
