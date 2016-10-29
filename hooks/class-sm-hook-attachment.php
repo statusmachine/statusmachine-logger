@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Attachment extends SM_Hook_Base {
+class SM_Hook_Attachment extends SM_Hook_Base {
 
 	protected function _add_log_attachment( $action, $attachment_id ) {
 		$post = get_post( $attachment_id );

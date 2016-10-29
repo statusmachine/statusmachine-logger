@@ -22,17 +22,17 @@ class SM_Hooks {
 		include( plugin_dir_path( STATUS_MACHINE__FILE__ ) . '/hooks/class-sm-hook-export.php' );
 		include( plugin_dir_path( STATUS_MACHINE__FILE__ ) . '/hooks/class-sm-hook-comments.php' );
 		
-		new AAL_Hook_User();
-		new AAL_Hook_Attachment();
-		new AAL_Hook_Menu();
-		new AAL_Hook_Options();
-		new AAL_Hook_Plugins();
-		new AAL_Hook_Posts();
-		new AAL_Hook_Taxonomy();
-		new AAL_Hook_Theme();
-		new AAL_Hook_Widgets();
-		new AAL_Hook_Core();
-		new AAL_Hook_Export();
-		new AAL_Hook_Comments();
+		new SM_Hook_User();
+		new SM_Hook_Attachment();
+		new SM_Hook_Menu();
+		new SM_Hook_Options();
+		new SM_Hook_Plugins();
+		new SM_Hook_Posts();
+		new SM_Hook_Taxonomy();
+		new SM_Hook_Theme();
+		new SM_Hook_Widgets();
+		new SM_Hook_Core();
+		new SM_Hook_Export();
+		new SM_Hook_Comments();
 	}
 }
