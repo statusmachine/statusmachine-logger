@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class AAL_Hook_Plugins extends SM_Hook_Base {
+class SM_Hook_Plugins extends SM_Hook_Base {
 
 	protected function _add_log_plugin( $action, $plugin_name ) {
 		// Get plugin name if is a path
