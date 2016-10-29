@@ -79,7 +79,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 		);
 		
 		$this->_roles = apply_filters(
-			'aal_init_roles',
+			'sm_init_roles',
 			array(
 				// admin
 				'manage_options' => array( 'Core', 'Export', 'Post', 'Taxonomy', 'User', 'Options', 'Attachment', 'Plugin', 'Widget', 'Theme', 'Menu', 'Comments' ),
