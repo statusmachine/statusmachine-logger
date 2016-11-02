@@ -23,7 +23,6 @@ class SM_Notifications {
 	
 	public function process_notifications( $args ) {
 		$enabled_handlers = $this->get_enabled_handlers();
-		
 		// if we can't find any enabled event handlers, bail.
 		if ( empty( $enabled_handlers ) )
 			return;
@@ -31,31 +30,12 @@ class SM_Notifications {
 		// calculate if this type event is set in the rules
 		$options = SM_Main::instance()->settings->get_options();
 		
-		// if there are no rules set, bail.
-		if ( empty( $options['notification_rules'] ) || ! is_array( $options['notification_rules'] ) )
-			return;
-		
-		$notification_matched_rules = array();
-		
-		// loop through the set of rules, and figure out if this current action meets a set rule
-		foreach ( $options['notification_rules'] as $notification_rule ) {
-			list( $n_key, $n_condition, $n_value ) = array_values( $notification_rule );
-			
-			switch ( $n_key ) {
-				case 'action-type':
-					if ( $n_value == $args['object_type'] )
-						$notification_matched_rules[] = $notification_rule;
-					break;
-			}
-		}
-		
-		// did we find any matches? if not, let's pretend as if nothing has happened here ;)
-		if ( ! empty( $notification_matched_rules ) ) {
+		// if ( ! empty( $notification_matched_rules ) ) {
 			// cycle through enabled handlers and trigger them
 			foreach ( $enabled_handlers as $enabled_handler ) {
 				$enabled_handler->trigger( $args );
 			}
-		}
+		// }
 	}
 
 	public function get_object_types() {
@@ -226,10 +206,11 @@ class SM_Notifications {
 		$options = SM_Main::instance()->settings->get_options();
 		
 		foreach ( $this->get_available_handlers() as $id => $handler_obj ) {
-			// make sure handler is active
-			if ( isset( $options['notification_handlers'][ $id ] ) && 1 == $options['notification_handlers'][ $id ] ) {
+			// the handlers are always active... we only have one, and we check 
+			// its value when it's time to actually notify.
+			// if ( isset( $options['notification_handlers'][ $id ] ) && 1 == $options['notification_handlers'][ $id ] ) {
 				$enabled[ $id ] = $handler_obj;
-			}
+			// }
 		}
 		
 		return $enabled;
@@ -241,7 +222,7 @@ class SM_Notifications {
 	 */
 	public function load_default_handlers() {
 		$default_handlers = apply_filters( 'sm_default_addons', array(
-			'email' 			=> $this->get_default_handler_path( 'class-sm-notification-email.php' ),
+			'api'			=> $this->get_default_handler_path( 'class-sm-notification-api.php' ),
 		) );
 
 		foreach ( $default_handlers as $filename )

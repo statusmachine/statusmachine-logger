@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class SM_Settings {
 	private $hook;
-	public $slug = 'activity-log-settings';
+	public $slug = 'status-machine-settings';
 	protected $options;
 	
 	public function __construct() {
@@ -26,7 +26,7 @@ class SM_Settings {
 		$settings_link = sprintf( '<a href="%s" target="_blank">%s</a>', 'https://github.com/statusmachine/statusmachine-logger', __( 'GitHub', 'status-machine' ) );
 		array_unshift( $links, $settings_link );
 		
-		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=activity-log-settings' ), __( 'Settings', 'status-machine' ) );
+		$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=status-machine-settings' ), __( 'Settings', 'status-machine' ) );
 		array_unshift( $links, $settings_link );
 		
 		return $links;
@@ -118,27 +118,7 @@ class SM_Settings {
 				}
 				break;
 
-			case 'notifications':
-				// Email Notifications Settings
-				add_settings_section(
-					'email_notifications', // ID used to identify this section and with which to register options
-					__( 'Notifications', 'status-machine' ),	// Title to be displayed on the administration page
-					array( 'SM_Settings_Fields', 'email_notifications_section_header' ),	// Callback used to render the description of the section
-					$this->slug		// Page on which to add this section of options
-				);
-
-				add_settings_field(
-					'notification_rules',
-					__( 'Notification Events', 'status-machine' ),
-					array( 'SM_Settings_Fields', 'email_notification_buffer_field' ),
-					$this->slug,
-					'email_notifications',
-					array(
-						'id'      => 'notification_rules',
-						'page'    => $this->slug,
-						'desc'    => __( 'Maximum number of days to keep activity log. Leave blank to keep activity log forever (not recommended).', 'status-machine' ),
-					)
-				);
+			case 'api':
 
 				$notification_handlers = SM_Main::instance()->notifications->get_available_handlers();
 				$enabled_notification_handlers = SM_Main::instance()->settings->get_option( 'notification_handlers' );
@@ -153,20 +133,6 @@ class SM_Settings {
 						$handler_obj->name,
 						array( $handler_obj, '_settings_section_callback' ),
 						$this->slug
-					);
-
-					add_settings_field(
-						"notification_handler_{$handler_id}_enabled",
-						__( 'Enable?', 'status-machine' ),
-						array( $handler_obj, '_settings_enabled_field_callback' ),
-						$this->slug,
-						"notification_$handler_id",
-						array(
-							'id'      => 'notification_transport',
-							'page'    => $this->slug,
-							'name' => "{$this->slug}[notification_handlers][{$handler_id}]",
-							'value' => (bool) ( 1 == $enabled_notification_handlers[ $handler_id ] ),
-						)
 					);
 
 					$handler_obj->settings_fields();
@@ -184,7 +150,7 @@ class SM_Settings {
 		if ( isset( $_REQUEST['sm_section'] ) )
 			return strtolower( $_REQUEST['sm_section'] );
 
-		return 'general';
+		return 'api';
 	}
 
 	/**
@@ -193,8 +159,7 @@ class SM_Settings {
 	private function menu_print_tabs() {
 		$current_section = $this->get_setup_section();
 		$sections = array(
-			'general'       => __( 'General', 'status-machine' ),
-			'notifications' => __( 'Notifications', 'status-machine' ),
+			'api' => __( 'API', 'status-machine' ),
 		);
 
 		$sections = apply_filters( 'sm_setup_sections', $sections );
@@ -225,7 +190,6 @@ class SM_Settings {
 
 			<h1 class="sm-page-title"><?php _e( 'Status Machine Settings', 'status-machine' ); ?></h1>
 			<?php settings_errors(); ?>
-			<h2 class="nav-tab-wrapper"><?php $this->menu_print_tabs(); ?></h2>
 			
 			<form method="post" action="options.php">
 				<?php
@@ -270,7 +234,7 @@ class SM_Settings {
 		SM_Main::instance()->api->erase_all_items();
 		
 		wp_redirect( add_query_arg( array(
-				'page' => 'activity-log-settings',
+				'page' => 'status-machine-settings',
 				'message' => 'data_erased',
 		), admin_url( 'admin.php' ) ) );
 		die();

@@ -93,6 +93,7 @@ abstract class SM_Notification_Base {
 		return $handler_options;
 	}
 
+	// Returns an associative Array
 	public function prep_notification_body( $args ) {
 		$details_to_provide = array(
 			'user_id'     => __( 'User', 'status-machine' ),
@@ -101,28 +102,10 @@ abstract class SM_Notification_Base {
 			'action'      => __( 'Action Type', 'status-machine' ),
 			'hist_ip'     => __( 'IP Address', 'status-machine' ),
 		);
-		$message = '';
+		$message = array();
 
 		foreach ( $details_to_provide as $detail_key => $detail_title ) {
-			$detail_val = '';
-
-			switch ( $detail_key ) {
-				case 'user_id':
-					if ( is_numeric( $args[ $detail_key ] ) ) {
-						// this is a user ID
-						$user = new WP_User( $args[ $detail_key ] );
-
-						if ( ! is_wp_error( $user ) ) {
-							$detail_val = sprintf( '<a href="%s">%s</a>', esc_url( get_edit_user_link( $user->ID ) ), esc_html( $user->display_name ) );
-						}
-					}
-					break;
-				default:
-					$detail_val = isset( $args[ $detail_key ] ) ? $args[ $detail_key ] : __( 'N/A', 'status-machine' );
-					break;
-			}
-
-			$message .= sprintf( "<strong>%s</strong> - %s\n", $detail_title, $detail_val );
+			$message[$detail_key] = $args[ $detail_key ];
 		}
 
 		return $message;

@@ -16,7 +16,7 @@ class SM_Help {
         $screen = get_current_screen();
 
         switch ( $screen->id ) {
-            case 'activity-log_page_activity-log-settings':
+            case 'activity-log_page_status-machine-settings':
                 $screen->add_help_tab( array(
                     'title' => __( 'Overview', 'status-machine' ),
                     'id' => 'sm-overview',
