@@ -6,6 +6,9 @@ class SM_Maintenance {
 	public static function activate( $network_wide ) {
 		global $wpdb;
 
+		if ( ! current_user_can( 'activate_plugins' ) )
+			return;
+
 		if ( function_exists( 'is_multisite') && is_multisite() && $network_wide ) {
 			$old_blog_id = $wpdb->blogid;
 
@@ -13,16 +16,43 @@ class SM_Maintenance {
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_create_tables();
+				self::_activate_wp_cron();
 			}
 
 			switch_to_blog( $old_blog_id );
 		} else {
 			self::_create_tables();
+			self::_activate_wp_cron();
+		}
+
+	}
+
+	public static function deactivate( $network_wide ) {
+		global $wpdb;
+
+		if ( ! current_user_can( 'activate_plugins' ) )
+			return;
+
+		if ( function_exists( 'is_multisite') && is_multisite() && $network_deactivating ) {
+			$old_blog_id = $wpdb->blogid;
+
+			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs};" );
+			foreach ( $blog_ids as $blog_id ) {
+				switch_to_blog( $blog_id );
+				self::_deactivate_wp_cron();
+			}
+
+			switch_to_blog( $old_blog_id );
+		} else {
+			self::_deactivate_wp_cron();
 		}
 	}
 
 	public static function uninstall( $network_deactivating ) {
 		global $wpdb;
+
+		if ( ! current_user_can( 'activate_plugins' ) )
+			return;
 
 		if ( function_exists( 'is_multisite') && is_multisite() && $network_deactivating ) {
 			$old_blog_id = $wpdb->blogid;
@@ -31,11 +61,13 @@ class SM_Maintenance {
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::_remove_tables();
+				self::_deactivate_wp_cron();
 			}
 
 			switch_to_blog( $old_blog_id );
 		} else {
 			self::_remove_tables();
+			self::_deactivate_wp_cron();
 		}
 	}
 
@@ -46,6 +78,7 @@ class SM_Maintenance {
 			$old_blog_id = $wpdb->blogid;
 			switch_to_blog( $blog_id );
 			self::_create_tables();
+			self::_activate_wp_cron();
 			switch_to_blog( $old_blog_id );
 		}
 	}
@@ -56,6 +89,7 @@ class SM_Maintenance {
 		$old_blog_id = $wpdb->blogid;
 		switch_to_blog( $blog_id );
 		self::_remove_tables();
+		self::_deactivate_wp_cron();
 		switch_to_blog( $old_blog_id );
 	}
 
@@ -97,12 +131,40 @@ class SM_Maintenance {
 
 		delete_option( 'activity_log_db_version' );
 	}
+
+	protected static function _activate_wp_cron() {
+		// Since there can be different themes on different sites of a network, 
+		// we need to schedule the wp_cron for each one of these sites. 
+		// Otherwise it might not be trigger for a particular theme.
+		// It's done outside of the 
+		// If this doesn't work, make sure DISABLE_WP_CRON is not true
+		if (! wp_next_scheduled ( 'sm_twicedaily_event' )) {
+			wp_schedule_event(time(), 'twicedaily', 'sm_twicedaily_event');
+		}
+	}
+
+	protected static function _deactivate_wp_cron() {
+		wp_clear_scheduled_hook('sm_twicedaily_event');
+	}
+}
+
+function check_for_theme_modifications() {
+	/*
+	if is multisite
+		check what is the current theme of the current site that is calling this event (is it possible?)
+		for this site's active theme and child_theme, send the notification to Status Machine about what changes were made in the filesystem for that theme (child_theme)
+	else (not multisite)
+		for the active theme and child_theme, send the notification to Status Machine about what changes were made in the filesystem for that theme (child_theme)
+	*/
 }
 
 register_activation_hook( STATUS_MACHINE_BASE, array( 'SM_Maintenance', 'activate' ) );
+register_deactivation_hook( STATUS_MACHINE_BASE, array( 'SM_Maintenance', 'deactivate' ) );
 register_uninstall_hook( STATUS_MACHINE_BASE, array( 'SM_Maintenance', 'uninstall' ) );
 
 // MU installer for new blog.
 add_action( 'wpmu_new_blog', array( 'SM_Maintenance', 'mu_new_blog_installer' ), 10, 6 );
 // MU Uninstall for delete blog.
 add_action( 'delete_blog', array( 'SM_Maintenance', 'mu_delete_blog' ), 10, 2 );
+// Check 
+add_action( 'sm_twicedaily_event', 'check_for_theme_modifications');
