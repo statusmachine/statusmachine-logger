@@ -80,12 +80,14 @@ class SM_Admin_Ui {
 				content: none !important;
 			}
 			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image {
-				background: url(<?php echo plugins_url('../assets/images/sm-sprite.png', __FILE__) ?>) no-repeat 0 -32px !important;
+				background: url(<?php echo plugins_url('../assets/images/sm-sprite.png', __FILE__) ?>) no-repeat 3px -32px !important;
 			}
-        #adminmenu #toplevel_page_activity_log_page:hover .wp-menu-image,
-        #adminmenu #toplevel_page_activity_log_page.wp-has-current-submenu .wp-menu-image {
-				background-position: 0 2px !important;
-			}
+		#adminmenu #toplevel_page_activity_log_page:hover .wp-menu-image {
+			background-position: 3px 2px !important;
+		}
+		#adminmenu #toplevel_page_activity_log_page.wp-has-current-submenu .wp-menu-image {
+			background-position: 3px -66px !important;
+		}
 		</style>
 	<?php
 	}
