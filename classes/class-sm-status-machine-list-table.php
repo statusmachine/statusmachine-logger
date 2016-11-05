@@ -266,7 +266,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 				ORDER BY `%1$s`
 			;',
 			'user_id',
-			$wpdb->activity_log
+			$wpdb->status_machine
 		) );
 
 		$types = $wpdb->get_results( $wpdb->prepare(
@@ -277,7 +277,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 				ORDER BY `%1$s`
 			;',
 			'object_type',
-			$wpdb->activity_log
+			$wpdb->status_machine
 		) );
 
 		// Make sure we get items for filter.
@@ -366,7 +366,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 				ORDER BY `%1$s`
 			;',
 			'action',
-			$wpdb->activity_log
+			$wpdb->status_machine
 		) );
 
 		if ( $actions ) {
@@ -447,7 +447,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 			'SELECT COUNT(`histid`) FROM `%1$s`
 				' . $where . '
 					' . $this->_get_where_by_role(),
-			$wpdb->activity_log,
+			$wpdb->status_machine,
 			$offset,
 			$items_per_page
 		) );
@@ -458,7 +458,7 @@ class SM_Status_Machine_List_Table extends WP_List_Table {
 					' . $this->_get_where_by_role() . '
 					ORDER BY `%2$s` %3$s
 					LIMIT %4$d, %5$d;',
-			$wpdb->activity_log,
+			$wpdb->status_machine,
 			$_REQUEST['orderby'],
 			$_REQUEST['order'],
 			$offset,

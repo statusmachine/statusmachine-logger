@@ -39,7 +39,7 @@ class SM_Settings {
 	 */
 	public function action_admin_menu() {
 		$this->hook = add_submenu_page(
-			'activity_log_page',
+			'status_machine_page',
 			__( 'Status Machine Settings', 'status-machine' ), 	// <title> tag
 			__( 'Settings', 'status-machine' ), 			// menu label
 			'manage_options', 								// required cap to view this page

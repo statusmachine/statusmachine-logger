@@ -83,7 +83,7 @@ class SM_Maintenance {
 		if ( $admin_role instanceof WP_Role && ! $admin_role->has_cap( 'view_all_status_machine' ) )
 			$admin_role->add_cap( 'view_all_status_machine' );
 		
-		update_option( 'activity_log_db_version', '1.0' );
+		update_option( 'status_machine_db_version', '1.0' );
 	}
 
 	protected static function _remove_tables() {
@@ -95,7 +95,7 @@ class SM_Maintenance {
 		if ( $admin_role && $admin_role->has_cap( 'view_all_status_machine' ) )
 			$admin_role->remove_cap( 'view_all_status_machine' );
 
-		delete_option( 'activity_log_db_version' );
+		delete_option( 'status_machine_db_version' );
 	}
 }
 

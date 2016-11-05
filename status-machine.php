@@ -103,7 +103,7 @@ final class SM_Main {
 		$this->help          = new SM_Help();
 
 		// set up our DB name
-		$wpdb->activity_log = $wpdb->prefix . 'status_machine';
+		$wpdb->status_machine = $wpdb->prefix . 'status_machine';
 		
 		add_action( 'plugins_loaded', array( &$this, 'load_textdomain' ) );
 	}

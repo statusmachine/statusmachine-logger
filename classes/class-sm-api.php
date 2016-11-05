@@ -19,7 +19,7 @@ class SM_API {
 			$wpdb->prepare(
 				'DELETE FROM `%1$s`
 					WHERE `hist_time` < %2$d',
-				$wpdb->activity_log,
+				$wpdb->status_machine,
 				strtotime( '-' . $logs_lifespan . ' days', current_time( 'timestamp' ) )
 			)
 		);
@@ -63,7 +63,7 @@ class SM_API {
 		$wpdb->query(
 			$wpdb->prepare(
 				'TRUNCATE %1$s',
-				$wpdb->activity_log
+				$wpdb->status_machine
 			)
 		);
 	}
@@ -119,7 +119,7 @@ class SM_API {
 						AND `hist_ip` = \'%8$s\'
 						AND `hist_time` = \'%9$s\'
 				;',
-				$wpdb->activity_log,
+				$wpdb->status_machine,
 				$args['user_caps'],
 				$args['action'],
 				$args['object_type'],
@@ -135,7 +135,7 @@ class SM_API {
 			return;
 
 		$wpdb->insert(
-			$wpdb->activity_log,
+			$wpdb->status_machine,
 			array(
 				'action'         => $args['action'],
 				'object_type'    => $args['object_type'],

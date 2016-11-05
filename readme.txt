@@ -6,7 +6,7 @@ Tested up to: 4.5
 Stable tag: 2.3.4
 License: GPLv2 or later
 
-Synchronizes the changes you've made in WordPress with your Status Machine account, so that you can later pinpoint what changes caused some effects on your site.
+Status Machine helps people find the reason for visual bugs that they have on their WordPress site. This plugin gives Status Machine some hints about what the issues could be.
 
 == Description ==
 
@@ -15,10 +15,10 @@ Synchronizes the changes you've made in WordPress with your Status Machine accou
 Want to monitor and track your site activity? Find out exactly who does what on your WordPress website. Status Machine is like an airplane's black box that logs every activity in WordPress, and lets you see exactly what people are doing on your site.
 
 * Like, if someone is trying to hack your site.
-* Or, when a theme was updated.
+* Or, exactly when a theme was updated.
 * Or, if a plugin was activated/deactivated.
 
-Useful, right? Trust us, you won't understand how you managed your website without it.
+You won't understand how you managed your website without it. Promise.
 
 <h4>With the Status Machine you can log:</h4>
 * <strong>WordPress</strong> - Core Updates
@@ -62,14 +62,13 @@ Useful, right? Trust us, you won't understand how you managed your website witho
 1. Upload plugin files to your plugins folder, or install using WordPress' built-in Add New Plugin installer
 1. Activate the plugin
 1. Go to the plugin page (under Dashboard > Status Machine)
-1. Enter your site's API key and secret.
+1. Enter your site's API key.
 
 == Screenshots ==
 
 1. The log viewer page
 2. The settings page
 3. Screen Options
-4. Interface for defining notification rules
 
 == Frequently Asked Questions ==
 
@@ -83,7 +82,7 @@ Useful, right? Trust us, you won't understand how you managed your website witho
 = Is that a fork of another plugin? =
 
 * Yes, this plugin was formerly created by: pojo.me, KingYes, ariel.k and maor, under the name of
-"Activity Log" and forked for our specific needs (basically, talking with Status Machine's API).
+"Activity Log" and forked for Status Machine's specific needs (talking with Status Machine's API).
 
 == Changelog ==
 

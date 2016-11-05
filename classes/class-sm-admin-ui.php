@@ -13,13 +13,13 @@ class SM_Admin_Ui {
 	public function create_admin_menu() {
 		$menu_capability = current_user_can( 'view_sm_status_machine' ) ? 'view_sm_status_machine' : 'edit_pages';
 		
-		$this->_screens['main'] = add_menu_page( __( 'Status Machine', 'status-machine' ), __( 'Status Machine', 'status-machine' ), $menu_capability, 'activity_log_page', array( &$this, 'activity_log_page_func' ), '', '2.1' );
+		$this->_screens['main'] = add_menu_page( __( 'Status Machine', 'status-machine' ), __( 'Status Machine', 'status-machine' ), $menu_capability, 'status_machine_page', array( &$this, 'status_machine_page_func' ), '', '2.1' );
 		
 		// Just make sure we are create instance.
 		add_action( 'load-' . $this->_screens['main'], array( &$this, 'get_list_table' ) );
 	}
 
-	public function activity_log_page_func() {
+	public function status_machine_page_func() {
 		$this->get_list_table()->prepare_items();
 		?>
 		<div class="wrap">
@@ -76,16 +76,16 @@ class SM_Admin_Ui {
 	public function admin_header() {
 		// TODO: move to a separate file.
 		?><style>
-			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image::before {
+			#adminmenu #toplevel_page_status_machine_page div.wp-menu-image::before {
 				content: none !important;
 			}
-			#adminmenu #toplevel_page_activity_log_page div.wp-menu-image {
+			#adminmenu #toplevel_page_status_machine_page div.wp-menu-image {
 				background: url(<?php echo plugins_url('../assets/images/sm-sprite.png', __FILE__) ?>) no-repeat 3px -32px !important;
 			}
-		#adminmenu #toplevel_page_activity_log_page:hover .wp-menu-image {
+		#adminmenu #toplevel_page_status_machine_page:hover .wp-menu-image {
 			background-position: 3px 2px !important;
 		}
-		#adminmenu #toplevel_page_activity_log_page.wp-has-current-submenu .wp-menu-image {
+		#adminmenu #toplevel_page_status_machine_page.wp-has-current-submenu .wp-menu-image {
 			background-position: 3px -66px !important;
 		}
 		</style>
@@ -104,7 +104,7 @@ class SM_Admin_Ui {
 		if ( 'true' === get_user_meta( get_current_user_id(), '_sm_elementor_install_notice', true ) )
 			return;
 		
-		if ( ! in_array( get_current_screen()->id, array( 'toplevel_page_activity_log_page', 'dashboard', 'plugins', 'plugins-network' ) ) ) {
+		if ( ! in_array( get_current_screen()->id, array( 'toplevel_page_status_machine_page', 'dashboard', 'plugins', 'plugins-network' ) ) ) {
 			return;
 		}
 

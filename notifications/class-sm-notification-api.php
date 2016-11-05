@@ -44,7 +44,7 @@ class SM_Notification_API extends SM_Notification_Base {
 	}
 
 	public function settings_fields() {
-		$this->add_settings_field_helper( 'api_token', __( 'API token', 'status-machine' ), array( 'SM_Settings_Fields', 'text_field' ), __( 'You can find this in your Status Machine account preferences', 'status-machine' ) );
+		$this->add_settings_field_helper( 'api_token', __( 'API token', 'status-machine' ), array( 'SM_Settings_Fields', 'text_field' ), __( "Find it in your site's preferences in Status Machine", 'status-machine' ) );
 	}
 	
 	public function validate_options( $input ) {
