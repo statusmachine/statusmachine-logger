@@ -3,7 +3,7 @@ Contributors: jdesrosiers
 Tags: Status Machine, activity logging, notifications, troubleshooting, wordpress monitor
 Requires at least: 3.5
 Tested up to: 4.5
-Stable tag: 2.3.5
+Stable tag: 2.3.6
 License: GPLv2 or later
 
 Status Machine helps people find the reason for visual bugs that they have on their WordPress site.
@@ -85,6 +85,9 @@ You won't understand how you managed your website without it. Promise.
 "Activity Log" and forked for Status Machine's specific needs (talking with Status Machine's API).
 
 == Changelog ==
+
+= 2.3.6 =
+* Version update
 
 = 2.3.5 =
 * Version bump for publishing to the WordPress plugin directory

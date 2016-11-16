@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/status-machine/
 Description: Synchronizes the changes you've made in WordPress with your Status Machine account, so that you can later pinpoint what changes caused some effects on your site.
 Author: Julien Desrosiers, Yakir Sitbon, Maor Chasen, Ariel Klikstein
 Author URI: https://www.statusmachine.com/
-Version: 2.3.5
+Version: 2.3.6
 Text Domain: status-machine
 License: GPLv2 or later
 
