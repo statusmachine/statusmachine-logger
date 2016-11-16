@@ -86,5 +86,8 @@ You won't understand how you managed your website without it. Promise.
 
 == Changelog ==
 
+= 2.3.5 =
+* Version bump for publishing to the WordPress plugin directory
+
 = 1.0.0 =
 * Blastoff!
